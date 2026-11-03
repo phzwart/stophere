@@ -1,0 +1,18 @@
+{
+  "seed": 17,
+  "initial_observations": 3,
+  "bo_iterations": 6,
+  "objective_evaluations": 9,
+  "recommendation_x": 0.7494545975343178,
+  "recommendation_y": 1.299728994169823,
+  "dense_reference_x": 0.75115,
+  "dense_reference_y": 1.3002250632670198,
+  "dense_reference_simple_regret": 0.0004960690971969051,
+  "versions": {
+    "python": "3.12.14",
+    "torch": "2.14.1+cu130",
+    "botorch": "0.18.1",
+    "gpytorch": "1.15.2"
+  },
+  "note": "The dense reference grid is used only for retrospective teaching and scoring, never to choose x_next."
+}

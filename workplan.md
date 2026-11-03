@@ -89,10 +89,12 @@ Use the numerically stable log-EI implementation where appropriate. Record the p
 
 ### Phase 1 completion
 
-- [ ] Annotated reading list is available.
-- [ ] The primer explains the main concepts with checked sources.
-- [ ] The example runs and its figures make the BO loop understandable.
-- [ ] Questions and unclear points are recorded for discussion.
+- [x] Annotated reading list is available.
+- [x] The primer explains the main concepts with checked sources.
+- [x] The example runs and its figures make the BO loop understandable.
+- [x] Questions and unclear points are recorded for discussion.
+
+Completion evidence is summarized in [`docs/phase1_results.md`](docs/phase1_results.md).
 
 The aim is shared understanding. Use discussion to improve the explanations and identify where another example would help.
 

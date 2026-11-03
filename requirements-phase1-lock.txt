@@ -1,0 +1,8 @@
+# Exact versions used for the verified Phase 1 run (Python 3.12.14).
+torch==2.14.1
+botorch==0.18.1
+gpytorch==1.15.2
+matplotlib==3.10.8
+numpy==2.3.5
+jupyter==1.1.1
+pytest==9.1.1
