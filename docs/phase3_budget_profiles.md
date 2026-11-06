@@ -25,4 +25,3 @@ These are characterization results, not a final algorithm ranking. Five seeds gi
 - `results/phase3/budget_profiles/success_profiles.csv`: pooled rates and system-level quantiles.
 - `results/phase3/budget_profiles/success_by_budget.png`: success at each evaluation checkpoint.
 - `results/phase3/budget_profiles/success_quantiles_final_budget.png`: final success bars, interquartile ranges, and pooled-rate markers.
-
