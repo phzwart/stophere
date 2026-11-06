@@ -16,6 +16,8 @@ from experiments.phase3_characterization import (
     stopping_posterior,
     stopping_summaries,
 )
+from experiments.phase3_success_profiles import success_profile_rows
+from experiments.phase3_budget_profiles import _run_task
 
 
 def test_characterization_system_bank_covers_continuous_and_discrete_cases():
@@ -62,3 +64,47 @@ def test_small_trajectory_and_stopping_rules_are_bounded():
     result = stopping_summaries(trace)
     assert len(result) == 4
     assert all(5 <= row["stop_at_evals"] <= BUDGET for row in result)
+
+
+def test_extended_trajectory_can_skip_stopping_diagnostics():
+    system = next(s for s in SYSTEMS if s.name == "smooth_2d")
+    config = configuration_rows(system)[0]
+    trace = run_trajectory(
+        system, config, seed=0, budget=8, include_stopping_diagnostics=False
+    )
+    assert [row["n_eval"] for row in trace] == [5, 6, 7, 8]
+    assert all(np.isnan(row["posterior_ucb_gap_over_y_sd"]) for row in trace)
+    assert all(np.isnan(row["max_marginal_p_improve"]) for row in trace)
+
+
+def test_success_profiles_report_pooled_rate_and_system_quantiles():
+    traces = [
+        {"system": "easy", "config": "nominal", "seed": seed,
+         "n_eval": 5, "normalized_regret": regret}
+        for seed, regret in enumerate((0.0, 0.01, 0.02, 0.03))
+    ] + [
+        {"system": "hard", "config": "nominal", "seed": seed,
+         "n_eval": 5, "normalized_regret": regret}
+        for seed, regret in enumerate((0.20, 0.20, 0.01, 0.20))
+    ]
+    row = success_profile_rows(traces, checkpoints=(5,))[0]
+    assert row["pooled_success_rate"] == 5 / 8
+    assert row["system_success_median"] == 0.625
+    assert row["system_success_q25"] == 0.4375
+    assert row["system_success_q75"] == 0.8125
+
+
+def test_incremental_budget_runner_matches_reference_trajectory():
+    system = next(s for s in SYSTEMS if s.name == "smooth_2d")
+    config = configuration_rows(system)[0]
+    reference = run_trajectory(
+        system, config, seed=0, budget=12, include_stopping_diagnostics=False
+    )
+    incremental = _run_task((system, config, 0, 12))
+    assert [row["n_eval"] for row in incremental] == [
+        row["n_eval"] for row in reference
+    ]
+    assert np.allclose(
+        [row["normalized_regret"] for row in incremental],
+        [row["normalized_regret"] for row in reference],
+    )

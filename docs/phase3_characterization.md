@@ -35,7 +35,7 @@ The latter two are diagnostics, not formal guarantees: the UCB gap depends on th
 
 ## Reading the results
 
-`summary.csv` reports final normalized regret by system/configuration over five seeds. `comparison_deltas.csv` reports paired seed-wise changes against the nominal configuration within each system (negative is better). `stopping_rules.csv` records each counterfactual stop prefix, false stops, and evaluations saved. `trajectories.csv` contains the step-by-step raw data, including the diagnostic GP's kernel and length scale for auditability. The plot summarizes kernel-family and stopping-rule comparisons; consult CSVs for per-system variation rather than relying on pooled averages.
+`summary.csv` reports final normalized regret by system/configuration over five seeds. `comparison_deltas.csv` reports paired seed-wise changes against the nominal configuration within each system (negative is better). `stopping_rules.csv` records each counterfactual stop prefix, false stops, and evaluations saved. `trajectories.csv` contains the step-by-step raw data, including the diagnostic GP's kernel and length scale for auditability. `success_profiles.csv` adds pooled success plus the median and 25th/75th percentiles of system-level success. The quantiles describe spread across benchmark systems, not sampling uncertainty or confidence intervals. `success_quantiles_final_budget.png` and `success_by_budget.png` visualize those summaries.
 
 ## Pilot results
 
@@ -100,6 +100,9 @@ The shared diagnostic-GP convention was made explicit and enforced in the curren
 - Current code uses generic Euclidean kernels on an encoded binary MRF and does not exploit its graph. A graph/Hamming-aware covariance is a future comparison, not part of this result.
 - Stopping thresholds are plausible pilot values, not calibrated universal defaults. Report the regret/savings/false-stop frontier over multiple thresholds, and include per-system and paired-seed outcomes.
 - Treat this as a Phase 3 characterization prototype, then implement and validate the five planned acquisition strategies in BoTorch before increasing budgets or making project-level claims.
+- Use `phase3_budget_profiles.py` for the 50/150-evaluation BO-policy screen. The existing 24-evaluation CSV cannot support those checkpoints; they require new trajectories.
+- See `phase3_budget_profiles.md` for the completed 180-trajectory screen and measured results.
+- Build the full cross-algorithm matrix separately, following `phase3_full_matrix_plan.md`, with BAM, SNOBFIT, MCS, CMA-ES, and NOMAD on continuous box-constrained systems.
 - Implement the exact planned Phase 4 stopping definitions (including a common EI diagnostic, `max U(x) - L(x_hat)`, and joint-posterior probability of acceptable regret), keeping them separate from acquisition decisions.
 
 The desired deliverable is a map of **conditions and failure modes**: objective × model assumption × acquisition/hyperparameter × stopping rule → quality, reliability, and evaluation cost.

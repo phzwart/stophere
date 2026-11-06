@@ -147,7 +147,13 @@ def configuration_rows(system: System):
     return configs
 
 
-def run_trajectory(system: System, config: tuple, seed: int) -> list[dict]:
+def run_trajectory(
+    system: System,
+    config: tuple,
+    seed: int,
+    budget: int = BUDGET,
+    include_stopping_diagnostics: bool = True,
+) -> list[dict]:
     label, kernel, ls_mult, acq, beta, noise_fraction = config
     objective = get_benchmark(system.benchmark, system.dimension, field_seed=FIELD_SEED)
     points = catalogue(system)
@@ -170,12 +176,21 @@ def run_trajectory(system: System, config: tuple, seed: int) -> list[dict]:
     def observe(n_eval: int):
         mu, sigma, _, _ = posterior(train_x, train_y, points, kernel, ls,
                                      noise_fraction * value_range / max(float(train_y.std()), 1e-8))
-        stop_mu, stop_sigma, _, y_scale = stopping_posterior(
-            train_x, train_y, points, system, noise_fraction, value_range
-        )
         best_y = float(train_y.max())
-        ucb_gap = max(float(np.max(stop_mu + 1.96 * stop_sigma) - best_y), 0.0)
-        p_improve = float(np.max(normal_cdf((stop_mu - best_y - 0.01 * y_scale) / np.maximum(stop_sigma, 1e-12))))
+        if include_stopping_diagnostics:
+            stop_mu, stop_sigma, _, y_scale = stopping_posterior(
+                train_x, train_y, points, system, noise_fraction, value_range
+            )
+            ucb_gap = max(float(np.max(stop_mu + 1.96 * stop_sigma) - best_y), 0.0)
+            p_improve = float(np.max(normal_cdf(
+                (stop_mu - best_y - 0.01 * y_scale) / np.maximum(stop_sigma, 1e-12)
+            )))
+            normalized_ucb_gap = ucb_gap / y_scale
+        else:
+            # Extended-budget success profiles do not use stopping rules. Avoid
+            # a second exact-GP fit at every step and retain a stable CSV schema.
+            normalized_ucb_gap = float("nan")
+            p_improve = float("nan")
         best_latent = float(latent[np.flatnonzero(np.all(points == train_x[np.argmax(train_y)], axis=1))[0]])
         regret = max(best_ref - best_latent, 0.0)
         trace.append({
@@ -185,13 +200,13 @@ def run_trajectory(system: System, config: tuple, seed: int) -> list[dict]:
             "seed": seed, "n_eval": n_eval,
             "best_observed": best_y, "best_latent_at_incumbent": best_latent,
             "regret": regret, "normalized_regret": regret / value_range,
-            "posterior_ucb_gap_over_y_sd": ucb_gap / y_scale,
+            "posterior_ucb_gap_over_y_sd": normalized_ucb_gap,
             "max_marginal_p_improve": p_improve,
         })
         return mu, sigma
 
     mu, sigma = observe(len(train_y))
-    while len(train_y) < BUDGET:
+    while len(train_y) < budget:
         if acq == "random":
             index = int(policy_rng.choice(np.flatnonzero(~used)))
         else:
@@ -342,6 +357,21 @@ def main():
     write_csv(out / "summary.csv", summary)
     write_csv(out / "comparison_deltas.csv", deltas)
     make_plot(summary, stop, out / "characterization_summary.png")
+    from experiments.phase3_success_profiles import (
+        make_budget_success_plot,
+        make_final_success_plot,
+        success_profile_rows,
+    )
+
+    checkpoints = tuple(n for n in (N_INITIAL, 10, 15, 20, BUDGET) if n <= BUDGET)
+    profiles = success_profile_rows(traces, checkpoints=checkpoints)
+    write_csv(out / "success_profiles.csv", profiles)
+    make_final_success_plot(
+        profiles, out / "success_quantiles_final_budget.png", final_eval=BUDGET
+    )
+    make_budget_success_plot(
+        profiles, out / "success_by_budget.png", checkpoints=checkpoints
+    )
     print(f"systems={len(SYSTEMS)} configs={len(configs)} seeds={N_SEEDS} total trajectories={len(SYSTEMS)*len(configs)*N_SEEDS}")
     print(f"budget={BUDGET}, initial={N_INITIAL}, output={out}")
     for rule in ("fixed_budget", "patience_5", "global_ucb_gap_0.05", "max_p_improve_0.05"):
