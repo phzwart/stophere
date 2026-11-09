@@ -59,4 +59,3 @@ The objectives are computationally cheap, so these values mostly measure optimiz
 - `results/phase3/external_algorithms/success_profiles.csv`: pooled success and cross-system quantiles.
 - `results/phase3/external_algorithms/success_by_budget.png`: 5/10/20/50/100/150 maximum-budget profiles.
 - `results/phase3/external_algorithms/success_quantiles_final_budget.png`: final medians, interquartile ranges, and pooled rates.
-

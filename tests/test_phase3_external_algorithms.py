@@ -30,4 +30,3 @@ def test_external_adapter_respects_small_budget(algorithm):
     assert [row["n_eval"] for row in trace] == list(range(1, 11))
     assert all(row["within_bounds"] == 1 for row in trace)
     assert all(row["algorithm"] == algorithm for row in trace)
-

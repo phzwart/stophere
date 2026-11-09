@@ -5,4 +5,3 @@ cma==4.5.0
 SQSnobFit==0.4.5
 PyNomadBBO==4.6.0
 bam-solver==5.0.0
-
