@@ -27,11 +27,16 @@
 
 - [Methods, MRF explanation, results, and limitations](phase3_characterization.md); this prototype does not complete the planned BoTorch Phase 3.
 - [Reproducible Phase 3 experiment](../experiments/phase3_characterization.py)
+- [Extended-budget BO policy results](phase3_budget_profiles.md)
+- [External derivative-free algorithm results](phase3_external_algorithms.md)
+- [Full comparison matrix plan](phase3_full_matrix_plan.md)
 - [Per-system/configuration summary](../results/phase3/characterization/summary.csv)
 - [Paired changes versus nominal GP](../results/phase3/characterization/comparison_deltas.csv)
 - [Exploratory stopping diagnostics](../results/phase3/characterization/stopping_rules.csv)
 - [Full evaluation trajectories](../results/phase3/characterization/trajectories.csv)
 - [Summary plot](../results/phase3/characterization/characterization_summary.png)
+- [External algorithm audit table](../results/phase3/external_algorithms/run_status.csv)
+- [External success-versus-budget plot](../results/phase3/external_algorithms/success_by_budget.png)
 
 ## Project navigation
 
@@ -39,3 +44,4 @@
 - [Workplan](../workplan.md)
 - [Phase 1 overview](../PHASE1_README.md)
 - [Phase 2 overview](../PHASE2_README.md)
+- [Phase 3 overview](../PHASE3_README.md)

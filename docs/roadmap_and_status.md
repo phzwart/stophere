@@ -10,7 +10,7 @@ This page separates Peter's original phase plan from the exploratory work added 
 | 2 — Test functions | Validate the 24 continuous 2D/3D benchmarks; add the separately reported MRF extension | Benchmark bank, tests, documentation, and generated 2D/3D gallery figures are present. The Phase 2 benchmark tests pass (33 tests). The 3×3 Ising MRF is an auxiliary discrete extension—not part of the 24 continuous cases. |
 | 3 — Acquisition methods | Implement EI, PI, UCB, Thompson sampling, and MES in BoTorch under a common protocol | **Not complete.** An exploratory NumPy prototype currently screens EI, PI, UCB, kernels, and hyperparameters. It has no BoTorch reproduction, Thompson sampling, or MES. This is the next planned phase to start. |
 | 4 — Stopping rules | Implement the five specified stopping approaches with shared diagnostics and model-aware uncertainty | **Not complete.** The prototype has fixed budget, a patience heuristic, a global-UCB-gap proxy, and a maximum marginal-improvement-probability proxy. These are not all the planned definitions. |
-| 5 — Pilot screen | Full 24-case × 5-acquisition × 5-seed BoTorch pilot, plus random reference | **Not complete.** The current 540-trajectory NumPy matrix covers 9 systems, 12 search configurations, and 5 seeds at budget 24. It is an exploratory screen, not the planned pilot. |
+| 5 — Pilot screen | Full 24-case × 5-acquisition × 5-seed BoTorch pilot, plus random reference | **Not complete.** The current 540-trajectory NumPy matrix covers 9 systems, 12 search configurations, and 5 seeds at budget 24. A separate 150-run continuous 2D screen validates CMA-ES, SNOBFIT, NOMAD, and BAM adapters. Neither is the planned BoTorch pilot. |
 | 6 — Reliability analysis | Regret, success, false-stop frequency, cost, model diagnostics, and failure analysis | Preliminary descriptive metrics exist for the screen; the planned complete analysis and uncertainty treatment remain. |
 | 7 — Confirmation | More seeds/field realizations and focused robustness checks | Not started. |
 
@@ -21,6 +21,8 @@ This page separates Peter's original phase plan from the exploratory work added 
 Stopping diagnostics now use a common RBF GP with each system's nominal length scale, independent of the search configuration's kernel/length-scale setting. This improves the comparison of stopping diagnostics across search policies. It remains a pilot convention, not the final stopping-rule design in Peter's plan. The diagnostics are applied to completed trajectories to estimate counterfactual stop times; this is valid for observers that do not change the search policy. In the regenerated run, the UCB-gap proxy saved 2.42 evaluations on average and false-stopped 32.2% of runs; maximum marginal P(improve) saved 3.27 and false-stopped 33.5%. Those are descriptive results under this prototype's definitions, not performance guarantees.
 
 The MRF's first standalone pilot is retained under `results/phase3/mrf_bo_pilot/` as a historical experiment. It used a different protocol from the later matrix, so its results should not be pooled with the matrix results. The matrix itself includes a fresh MRF condition.
+
+The external-optimizer screen is retained under `results/phase3/external_algorithms/`. It uses six continuous 2D systems, five methods, five seeds, and a maximum budget of 150. It validates official solver adapters and budget accounting, but it is not pooled with the finite-catalogue BO prototype because the search domains and initialization semantics differ.
 
 ## Repository map
 

@@ -26,8 +26,8 @@ The 3 × 3 Ising MRF is not directly compatible with continuous box-constrained 
 | --- | --- | --- |
 | Bayesian optimization | nominal GP-UCB, EI, PI; later Thompson sampling and MES | UCB, EI, and PI prototype available |
 | Sampling baseline | random search | available |
-| Global derivative-free | BAM, SNOBFIT, MCS, CMA-ES | adapter and dependency validation required |
-| Local/direct search | NOMAD | adapter and dependency validation required |
+| Global derivative-free | BAM, SNOBFIT, MCS, CMA-ES | BAM, SNOBFIT, and CMA-ES validated on the common 2D screen; MCS remains MATLAB-only |
+| Local/direct search | NOMAD | official PyNomad adapter validated; two runs naturally terminated before 150 evaluations |
 
 ## Fair-comparison requirements
 
@@ -41,7 +41,7 @@ The 3 × 3 Ising MRF is not directly compatible with continuous box-constrained 
 ## Two-week execution sequence
 
 1. Days 1-3: finalize the success-profile figures and validate the 50/150-step runner.
-2. Days 3-6: build and unit-test adapters for the available derivative-free solvers.
+2. Days 3-6: build and unit-test adapters for the available derivative-free solvers. **Completed for CMA-ES, SNOBFIT, NOMAD, and two-dimensional BAM.**
 3. Days 6-9: run a small smoke matrix, resolve domain and termination mismatches, then freeze the protocol.
 4. Days 9-12: run the paired-seed full matrix and generate quantile, budget-profile, regret, and runtime tables.
 5. Days 12-14: audit the results, package the figures and methods note, and prepare the group-meeting discussion for beamline deployment.

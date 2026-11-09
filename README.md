@@ -18,11 +18,13 @@ This project studies when Bayesian optimization can stop while still returning a
 - `examples/02_lengthscale_sensitivity.py`: Phase 1 GP misspecification example.
 - `src/benchmarks.py`: Phase 2 target functions, all maximization on normalized inputs.
 - `experiments/phase3_characterization.py`: reproducible NumPy exact-GP Phase 3 screening prototype over 9 systems and 12 configurations.
+- `experiments/phase3_external_algorithms.py`: official external-solver adapter screen on six continuous 2D systems.
 - `tests/`: correctness checks for the BO example and benchmark bank.
 - `results/phase1/`: saved Phase 1 trace and numerical summary.
 - `results/phase2/gallery/`: generated benchmark plots (recreate using the Phase 2 README).
 - `results/phase3/characterization/`: Phase 3 per-step traces, per-system summaries, paired deltas, exploratory stop-diagnostic outcomes, and comparison plot.
 - `results/phase3/mrf_bo_pilot/`: retained first MRF pilot, with a different protocol from the later matrix; do not pool the two result sets.
+- `results/phase3/external_algorithms/`: separate continuous-domain CMA-ES, SNOBFIT, NOMAD, BAM, and random screen; do not pool it with the finite-catalogue BO prototype.
 
 ## Quick start
 

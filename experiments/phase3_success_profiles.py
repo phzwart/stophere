@@ -26,6 +26,11 @@ DISPLAY_NAMES = {
     "observation_noise=3pct": "3% observation noise",
     "matern32_lengthscale_x2": "Matérn 3/2, length scale ×2",
     "random_baseline": "Random search",
+    "cma_es": "CMA-ES",
+    "snobfit": "SNOBFIT",
+    "nomad": "NOMAD",
+    "bam": "BAM",
+    "uniform_random": "Uniform random",
 }
 
 CONFIG_ORDER = tuple(DISPLAY_NAMES)
@@ -43,6 +48,11 @@ PROFILE_COLORS = {
     "acquisition=pi": "#AA3377",
     "matern32_lengthscale_x2": "#CCBB44",
     "random_baseline": "#777777",
+    "cma_es": "#3366AA",
+    "snobfit": "#228833",
+    "nomad": "#AA3377",
+    "bam": "#CC6677",
+    "uniform_random": "#777777",
 }
 
 
@@ -50,8 +60,15 @@ def success_profile_rows(
     traces: list[dict],
     checkpoints: tuple[int, ...] | list[int] | None = None,
     epsilon: float = 0.05,
+    carry_forward: bool = False,
 ) -> list[dict]:
-    """Summarize pooled and cross-system success at evaluation checkpoints."""
+    """Summarize pooled and cross-system success at evaluation checkpoints.
+
+    With ``carry_forward=True``, a run that terminates naturally before a
+    checkpoint contributes its last incumbent. This is appropriate for a
+    maximum-budget profile: stopping early does not erase the solution already
+    found, and it must not be treated as an adapter failure.
+    """
     if not traces:
         raise ValueError("traces must not be empty")
     available = sorted({int(row["n_eval"]) for row in traces})
@@ -59,7 +76,7 @@ def success_profile_rows(
         checkpoints = available
     checkpoints = tuple(dict.fromkeys(int(value) for value in checkpoints))
     missing = sorted(set(checkpoints) - set(available))
-    if missing:
+    if missing and not carry_forward:
         raise ValueError(
             f"checkpoints not present in trajectories: {missing}; "
             f"available range is {available[0]}-{available[-1]}"
@@ -75,10 +92,31 @@ def success_profile_rows(
     output = []
     for config in configs:
         for n_eval in checkpoints:
-            rows = [
-                row for row in traces
-                if row["config"] == config and int(row["n_eval"]) == n_eval
-            ]
+            if carry_forward:
+                config_rows = [
+                    row for row in traces if row["config"] == config
+                ]
+                run_keys = sorted({
+                    (row["system"], int(row["seed"])) for row in config_rows
+                })
+                rows = []
+                for system, seed in run_keys:
+                    candidates = [
+                        row for row in config_rows
+                        if row["system"] == system
+                        and int(row["seed"]) == seed
+                        and int(row["n_eval"]) <= n_eval
+                    ]
+                    if candidates:
+                        rows.append(max(
+                            candidates, key=lambda row: int(row["n_eval"])
+                        ))
+            else:
+                rows = [
+                    row for row in traces
+                    if row["config"] == config
+                    and int(row["n_eval"]) == n_eval
+                ]
             if not rows:
                 continue
             per_system = []

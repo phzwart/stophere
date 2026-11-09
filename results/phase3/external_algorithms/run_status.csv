@@ -1,0 +1,151 @@
+system,dimension,algorithm,algorithm_version,seed,budget,evaluations_recorded,terminated_early,status,message,error,wall_seconds
+smooth_2d,2,cma_es,4.5.0,0,150,150,0,completed,completed,,0.5400388999842107
+smooth_2d,2,cma_es,4.5.0,1,150,150,0,completed,completed,,0.5519387000240386
+smooth_2d,2,cma_es,4.5.0,2,150,150,0,completed,completed,,0.5501461997628212
+smooth_2d,2,cma_es,4.5.0,3,150,150,0,completed,completed,,0.5493677998892963
+smooth_2d,2,cma_es,4.5.0,4,150,150,0,completed,completed,,0.41350469971075654
+smooth_2d,2,snobfit,0.4.5,0,150,150,0,completed,completed,,1.2278900002129376
+smooth_2d,2,snobfit,0.4.5,1,150,150,0,completed,completed,,1.245618799701333
+smooth_2d,2,snobfit,0.4.5,2,150,150,0,completed,completed,,1.264765900094062
+smooth_2d,2,snobfit,0.4.5,3,150,150,0,completed,completed,,1.1992365000769496
+smooth_2d,2,snobfit,0.4.5,4,150,150,0,completed,completed,,1.1437702998518944
+smooth_2d,2,nomad,4.6.0,0,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) No more points to evaluate,,1.5530056999996305
+smooth_2d,2,nomad,4.6.0,1,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) No more points to evaluate,,1.6401344002224505
+smooth_2d,2,nomad,4.6.0,2,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) No more points to evaluate,,1.9038276001811028
+smooth_2d,2,nomad,4.6.0,3,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) Success found and opportunistic strategy maybe used (if set),,1.4608495002612472
+smooth_2d,2,nomad,4.6.0,4,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) No more points to evaluate,,1.3837930001318455
+smooth_2d,2,bam,5.0.0,0,150,150,0,completed,Solver reached limit on function calls.,,15.126567000057548
+smooth_2d,2,bam,5.0.0,3,150,150,0,completed,Solver reached limit on function calls.,,14.260144200176
+smooth_2d,2,uniform_random,numpy-1.26.4,0,150,150,0,completed,completed,,0.010467899963259697
+smooth_2d,2,uniform_random,numpy-1.26.4,1,150,150,0,completed,completed,,0.010299400426447392
+smooth_2d,2,uniform_random,numpy-1.26.4,2,150,150,0,completed,completed,,0.010776699986308813
+smooth_2d,2,uniform_random,numpy-1.26.4,3,150,150,0,completed,completed,,0.010888900142163038
+smooth_2d,2,uniform_random,numpy-1.26.4,4,150,150,0,completed,completed,,0.010007400065660477
+smooth_2d,2,bam,5.0.0,2,150,150,0,completed,Solver reached limit on function calls.,,14.984559500124305
+anisotropic_2d,2,cma_es,4.5.0,0,150,150,0,completed,completed,,0.3854221999645233
+anisotropic_2d,2,cma_es,4.5.0,1,150,150,0,completed,completed,,0.38696360029280186
+anisotropic_2d,2,cma_es,4.5.0,2,150,150,0,completed,completed,,0.38745739962905645
+smooth_2d,2,bam,5.0.0,1,150,150,0,completed,Solver reached limit on function calls.,,15.881652699783444
+anisotropic_2d,2,cma_es,4.5.0,3,150,150,0,completed,completed,,0.4132050001062453
+anisotropic_2d,2,cma_es,4.5.0,4,150,150,0,completed,completed,,0.40242409985512495
+anisotropic_2d,2,snobfit,0.4.5,0,150,150,0,completed,completed,,1.1210727002471685
+anisotropic_2d,2,snobfit,0.4.5,1,150,150,0,completed,completed,,1.136075499933213
+anisotropic_2d,2,snobfit,0.4.5,2,150,150,0,completed,completed,,1.1310333996079862
+anisotropic_2d,2,snobfit,0.4.5,3,150,150,0,completed,completed,,1.083141999784857
+anisotropic_2d,2,snobfit,0.4.5,4,150,150,0,completed,completed,,1.0941468998789787
+anisotropic_2d,2,nomad,4.6.0,0,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) No more points to evaluate,,2.137782000005245
+anisotropic_2d,2,nomad,4.6.0,1,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) Success found and opportunistic strategy maybe used (if set),,1.5320434998720884
+anisotropic_2d,2,nomad,4.6.0,2,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global),,1.9242239003069699
+anisotropic_2d,2,nomad,4.6.0,3,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) Success found and opportunistic strategy maybe used (if set),,1.6149177001789212
+anisotropic_2d,2,nomad,4.6.0,4,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) Success found and opportunistic strategy maybe used (if set),,1.6619577002711594
+anisotropic_2d,2,bam,5.0.0,0,150,150,0,completed,Solver reached limit on function calls.,,5.361116100102663
+anisotropic_2d,2,bam,5.0.0,2,150,150,0,completed,Solver reached limit on function calls.,,5.04153240006417
+anisotropic_2d,2,bam,5.0.0,1,150,150,0,completed,Solver reached limit on function calls.,,5.4087312002666295
+anisotropic_2d,2,uniform_random,numpy-1.26.4,0,150,150,0,completed,completed,,0.014862300362437963
+anisotropic_2d,2,uniform_random,numpy-1.26.4,1,150,150,0,completed,completed,,0.014679700136184692
+anisotropic_2d,2,uniform_random,numpy-1.26.4,2,150,150,0,completed,completed,,0.01609899988397956
+anisotropic_2d,2,uniform_random,numpy-1.26.4,3,150,150,0,completed,completed,,0.01611259998753667
+anisotropic_2d,2,uniform_random,numpy-1.26.4,4,150,150,0,completed,completed,,0.016654999926686287
+rippled_2d,2,cma_es,4.5.0,0,150,150,0,completed,completed,,0.3995547997765243
+rippled_2d,2,cma_es,4.5.0,1,150,150,0,completed,completed,,0.3908020001836121
+rippled_2d,2,cma_es,4.5.0,2,150,150,0,completed,completed,,0.375938699580729
+rippled_2d,2,cma_es,4.5.0,3,150,150,0,completed,completed,,0.37680420000106096
+smooth_2d,2,bam,5.0.0,4,150,150,0,completed,Solver reached limit on function calls.,,13.729096599854529
+rippled_2d,2,cma_es,4.5.0,4,150,150,0,completed,completed,,0.3750535002909601
+rippled_2d,2,snobfit,0.4.5,0,150,150,0,completed,completed,,1.167150799650699
+rippled_2d,2,snobfit,0.4.5,1,150,150,0,completed,completed,,1.145031000021845
+rippled_2d,2,snobfit,0.4.5,2,150,150,0,completed,completed,,1.1682898998260498
+rippled_2d,2,snobfit,0.4.5,3,150,150,0,completed,completed,,1.1506171999499202
+anisotropic_2d,2,bam,5.0.0,4,150,150,0,completed,Solver reached limit on function calls.,,4.727284099906683
+rippled_2d,2,snobfit,0.4.5,4,150,150,0,completed,completed,,1.1928608999587595
+anisotropic_2d,2,bam,5.0.0,3,150,150,0,completed,Solver reached limit on function calls.,,6.5732209999114275
+rippled_2d,2,nomad,4.6.0,0,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) Success found and opportunistic strategy maybe used (if set),,1.7514899000525475
+rippled_2d,2,nomad,4.6.0,1,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) Success found and opportunistic strategy maybe used (if set),,1.679632100276649
+rippled_2d,2,nomad,4.6.0,2,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) Success found and opportunistic strategy maybe used (if set),,1.93403510004282
+rippled_2d,2,nomad,4.6.0,3,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) Success found and opportunistic strategy maybe used (if set),,1.548541999887675
+rippled_2d,2,nomad,4.6.0,4,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global),,1.738433999940753
+rippled_2d,2,bam,5.0.0,0,150,150,0,completed,Solver reached limit on function calls.,,5.290444700047374
+rippled_2d,2,bam,5.0.0,2,150,150,0,completed,Solver reached limit on function calls.,,5.5120117999613285
+rippled_2d,2,uniform_random,numpy-1.26.4,0,150,150,0,completed,completed,,0.0134184998460114
+rippled_2d,2,uniform_random,numpy-1.26.4,1,150,150,0,completed,completed,,0.013347500003874302
+rippled_2d,2,uniform_random,numpy-1.26.4,2,150,150,0,completed,completed,,0.011762799695134163
+rippled_2d,2,uniform_random,numpy-1.26.4,3,150,150,0,completed,completed,,0.011235099751502275
+rippled_2d,2,uniform_random,numpy-1.26.4,4,150,150,0,completed,completed,,0.013913999777287245
+rippled_2d,2,bam,5.0.0,1,150,150,0,completed,Solver reached limit on function calls.,,5.602736200205982
+rippled_2d,2,bam,5.0.0,3,150,150,0,completed,Solver reached limit on function calls.,,5.420858400408179
+competing_modes_2d,2,cma_es,4.5.0,1,150,150,0,completed,completed,,0.394282600376755
+competing_modes_2d,2,cma_es,4.5.0,0,150,150,0,completed,completed,,0.3991951998323202
+competing_modes_2d,2,cma_es,4.5.0,2,150,150,0,completed,completed,,0.38137059984728694
+competing_modes_2d,2,cma_es,4.5.0,3,150,150,0,completed,completed,,0.38381760008633137
+competing_modes_2d,2,cma_es,4.5.0,4,150,150,0,completed,completed,,0.3893470000475645
+competing_modes_2d,2,snobfit,0.4.5,0,150,150,0,completed,completed,,1.1131106996908784
+competing_modes_2d,2,snobfit,0.4.5,1,150,150,0,completed,completed,,1.1135295000858605
+competing_modes_2d,2,snobfit,0.4.5,2,150,150,0,completed,completed,,1.1754622999578714
+competing_modes_2d,2,snobfit,0.4.5,3,150,150,0,completed,completed,,1.126246300060302
+competing_modes_2d,2,snobfit,0.4.5,4,150,150,0,completed,completed,,1.1600665003061295
+rippled_2d,2,bam,5.0.0,4,150,150,0,completed,Solver reached limit on function calls.,,4.932087200228125
+competing_modes_2d,2,nomad,4.6.0,0,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) No more points to evaluate,,1.7090098997578025
+competing_modes_2d,2,nomad,4.6.0,1,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) No more points to evaluate,,1.5622908999212086
+competing_modes_2d,2,nomad,4.6.0,2,150,131,1,completed,terminated_after_131,,1.6362704001367092
+competing_modes_2d,2,nomad,4.6.0,4,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) Success found and opportunistic strategy maybe used (if set),,1.4069709000177681
+competing_modes_2d,2,nomad,4.6.0,3,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) No more points to evaluate,,1.6301930001936853
+competing_modes_2d,2,bam,5.0.0,3,150,150,0,completed,Solver reached limit on function calls.,,7.499377300031483
+competing_modes_2d,2,bam,5.0.0,2,150,150,0,completed,Solver reached limit on function calls.,,7.661934500094503
+competing_modes_2d,2,uniform_random,numpy-1.26.4,0,150,150,0,completed,completed,,0.017291899770498276
+competing_modes_2d,2,uniform_random,numpy-1.26.4,1,150,150,0,completed,completed,,0.017194299958646297
+competing_modes_2d,2,uniform_random,numpy-1.26.4,2,150,150,0,completed,completed,,0.016663100104779005
+competing_modes_2d,2,uniform_random,numpy-1.26.4,3,150,150,0,completed,completed,,0.021053999662399292
+competing_modes_2d,2,bam,5.0.0,0,150,150,0,completed,Solver reached limit on function calls.,,8.305141999851912
+competing_modes_2d,2,uniform_random,numpy-1.26.4,4,150,150,0,completed,completed,,0.0189410001039505
+competing_modes_2d,2,bam,5.0.0,1,150,150,0,completed,Solver reached limit on function calls.,,8.394704099744558
+hidden_narrow_2d,2,cma_es,4.5.0,0,150,150,0,completed,completed,,0.3938215998932719
+hidden_narrow_2d,2,cma_es,4.5.0,1,150,150,0,completed,completed,,0.3955590999685228
+hidden_narrow_2d,2,cma_es,4.5.0,2,150,150,0,completed,completed,,0.4026530999690294
+hidden_narrow_2d,2,cma_es,4.5.0,3,150,150,0,completed,completed,,0.40057409973815084
+hidden_narrow_2d,2,cma_es,4.5.0,4,150,150,0,completed,completed,,0.39726080000400543
+hidden_narrow_2d,2,snobfit,0.4.5,0,150,150,0,completed,completed,,1.1124559002928436
+hidden_narrow_2d,2,snobfit,0.4.5,1,150,150,0,completed,completed,,1.1193413003347814
+hidden_narrow_2d,2,snobfit,0.4.5,2,150,150,0,completed,completed,,1.1275986996479332
+hidden_narrow_2d,2,snobfit,0.4.5,3,150,150,0,completed,completed,,1.0832499000243843
+hidden_narrow_2d,2,snobfit,0.4.5,4,150,150,0,completed,completed,,1.0859695998951793
+hidden_narrow_2d,2,nomad,4.6.0,0,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) No more points to evaluate,,1.5981732998043299
+hidden_narrow_2d,2,nomad,4.6.0,1,150,143,1,completed,terminated_after_143,,1.7248245999217033
+hidden_narrow_2d,2,nomad,4.6.0,2,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) No more points to evaluate,,1.6965258000418544
+hidden_narrow_2d,2,nomad,4.6.0,3,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) Success found and opportunistic strategy maybe used (if set),,1.749775799922645
+hidden_narrow_2d,2,nomad,4.6.0,4,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) No more points to evaluate,,1.6380219999700785
+competing_modes_2d,2,bam,5.0.0,4,150,150,0,completed,Solver reached limit on function calls.,,7.69703370006755
+hidden_narrow_2d,2,bam,5.0.0,2,150,150,0,completed,Solver reached limit on function calls.,,6.648372999858111
+hidden_narrow_2d,2,bam,5.0.0,0,150,150,0,completed,Solver reached limit on function calls.,,9.445982799865305
+hidden_narrow_2d,2,bam,5.0.0,1,150,150,0,completed,Solver reached limit on function calls.,,8.881388599984348
+hidden_narrow_2d,2,uniform_random,numpy-1.26.4,0,150,150,0,completed,completed,,0.013629599940031767
+hidden_narrow_2d,2,uniform_random,numpy-1.26.4,1,150,150,0,completed,completed,,0.015396500006318092
+hidden_narrow_2d,2,uniform_random,numpy-1.26.4,2,150,150,0,completed,completed,,0.01543010026216507
+hidden_narrow_2d,2,uniform_random,numpy-1.26.4,3,150,150,0,completed,completed,,0.01317210029810667
+hidden_narrow_2d,2,uniform_random,numpy-1.26.4,4,150,150,0,completed,completed,,0.013751800172030926
+rough_field_2d,2,cma_es,4.5.0,0,150,150,0,completed,completed,,0.38365430012345314
+rough_field_2d,2,cma_es,4.5.0,1,150,150,0,completed,completed,,0.3893423001281917
+rough_field_2d,2,cma_es,4.5.0,2,150,150,0,completed,completed,,0.3751527997665107
+rough_field_2d,2,cma_es,4.5.0,3,150,150,0,completed,completed,,0.38616849994286895
+rough_field_2d,2,cma_es,4.5.0,4,150,150,0,completed,completed,,0.39736009994521737
+rough_field_2d,2,snobfit,0.4.5,0,150,150,0,completed,completed,,1.0870876000262797
+hidden_narrow_2d,2,bam,5.0.0,3,150,150,0,completed,Solver reached limit on function calls.,,8.788901799824089
+rough_field_2d,2,snobfit,0.4.5,1,150,150,0,completed,completed,,1.0889790998771787
+rough_field_2d,2,snobfit,0.4.5,2,150,150,0,completed,completed,,1.1155799999833107
+rough_field_2d,2,snobfit,0.4.5,3,150,150,0,completed,completed,,1.1102641001343727
+rough_field_2d,2,snobfit,0.4.5,4,150,150,0,completed,completed,,1.1279616001993418
+rough_field_2d,2,nomad,4.6.0,0,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) Success found and opportunistic strategy maybe used (if set),,1.6581724998541176
+rough_field_2d,2,nomad,4.6.0,1,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) No more points to evaluate,,1.5670194998383522
+rough_field_2d,2,nomad,4.6.0,2,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) Success found and opportunistic strategy maybe used (if set),,1.7088621999137104
+rough_field_2d,2,nomad,4.6.0,3,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global) Success found and opportunistic strategy maybe used (if set),,1.4870762997306883
+rough_field_2d,2,nomad,4.6.0,4,150,150,0,completed,Maximum number of blackbox evaluations (Eval Global),,1.7948611001484096
+hidden_narrow_2d,2,bam,5.0.0,4,150,150,0,completed,Solver reached limit on function calls.,,8.539455300197005
+rough_field_2d,2,bam,5.0.0,0,150,150,0,completed,Solver reached limit on function calls.,,2.899323099758476
+rough_field_2d,2,bam,5.0.0,1,150,150,0,completed,Solver reached limit on function calls.,,5.419520200230181
+rough_field_2d,2,uniform_random,numpy-1.26.4,0,150,150,0,completed,completed,,0.014465500134974718
+rough_field_2d,2,uniform_random,numpy-1.26.4,1,150,150,0,completed,completed,,0.013576599769294262
+rough_field_2d,2,uniform_random,numpy-1.26.4,2,150,150,0,completed,completed,,0.015340500045567751
+rough_field_2d,2,uniform_random,numpy-1.26.4,3,150,150,0,completed,completed,,0.01670860033482313
+rough_field_2d,2,uniform_random,numpy-1.26.4,4,150,150,0,completed,completed,,0.013585899956524372
+rough_field_2d,2,bam,5.0.0,3,150,150,0,completed,Solver reached limit on function calls.,,4.608329600188881
+rough_field_2d,2,bam,5.0.0,2,150,150,0,completed,Solver reached limit on function calls.,,5.600382400210947
+rough_field_2d,2,bam,5.0.0,4,150,150,0,completed,Solver reached limit on function calls.,,4.792694100178778

@@ -108,3 +108,18 @@ def test_incremental_budget_runner_matches_reference_trajectory():
         [row["normalized_regret"] for row in incremental],
         [row["normalized_regret"] for row in reference],
     )
+
+
+def test_success_profiles_carry_forward_natural_early_termination():
+    traces = [
+        {"system": "system", "config": "method", "seed": 0,
+         "n_eval": 5, "normalized_regret": 0.2},
+        {"system": "system", "config": "method", "seed": 0,
+         "n_eval": 8, "normalized_regret": 0.01},
+    ]
+    row = success_profile_rows(
+        traces, checkpoints=(10,), carry_forward=True
+    )[0]
+    assert row["n_eval"] == 10
+    assert row["runs"] == 1
+    assert row["pooled_success_rate"] == 1.0

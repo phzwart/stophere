@@ -1,0 +1,8 @@
+# Optional dependencies for the external derivative-free algorithm screen.
+# NumPy 1.26 is required because SQSnobFit 0.4.5 is not NumPy 2 compatible.
+numpy==1.26.4
+cma==4.5.0
+SQSnobFit==0.4.5
+PyNomadBBO==4.6.0
+bam-solver==5.0.0
+
