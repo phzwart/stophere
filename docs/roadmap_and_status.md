@@ -9,9 +9,9 @@ This page separates Peter's original phase plan from the exploratory work added 
 | 1 — Foundations | Reading list, primer, and visual BO example | Learning materials, example, results, and presentation are in the repository. |
 | 2 — Test functions | Validate the 24 continuous 2D/3D benchmarks; add the separately reported MRF extension | Benchmark bank, tests, documentation, and generated 2D/3D gallery figures are present. The Phase 2 benchmark tests pass (33 tests). The 3×3 Ising MRF is an auxiliary discrete extension—not part of the 24 continuous cases. |
 | 3 — Acquisition methods | Implement EI, PI, UCB, Thompson sampling, and MES in BoTorch under a common protocol | **Implementation smoke stage.** The fair protocol, shared BoTorch runner, and all five policy selectors are present. All five executed on four contrasting smoke systems. The full-budget paired-seed experiment is not yet complete, so no formal policy ranking is claimed. |
-| 4 — Stopping rules | Implement the five specified stopping approaches with shared diagnostics and model-aware uncertainty | **Not complete.** The prototype has fixed budget, a patience heuristic, a global-UCB-gap proxy, and a maximum marginal-improvement-probability proxy. These are not all the planned definitions. |
-| 5 — Pilot screen | Full 24-case × 5-acquisition × 5-seed BoTorch pilot, plus random reference | **Not complete.** The current 540-trajectory NumPy matrix covers 9 systems, 12 search configurations, and 5 seeds at budget 24. A separate 150-run continuous 2D screen validates CMA-ES, SNOBFIT, NOMAD, and BAM adapters. Neither is the planned BoTorch pilot. |
-| 6 — Reliability analysis | Regret, success, false-stop frequency, cost, model diagnostics, and failure analysis | Preliminary descriptive metrics exist for the screen; the planned complete analysis and uncertainty treatment remain. |
+| 4 — Stopping rules | Implement the five specified stopping approaches with shared diagnostics and model-aware uncertainty | **Implementation smoke stage.** All five formal observers, first-trigger logging, repeated-look corrections, hard-budget fallback, documentation, and trajectory-invariance tests are present. Scientific thresholds remain provisional pending collaborator confirmation. |
+| 5 — Pilot screen | Full 24-case × 5-acquisition × 5-seed BoTorch pilot, plus random reference | **Execution scaffold present; matrix not launched.** A deterministic 600-task manifest and resumable per-task runner are available. The current 540-trajectory NumPy matrix and separate continuous external-optimizer screen remain diagnostic context, not substitutes for the formal pilot. |
+| 6 — Reliability analysis | Regret, success, false-stop frequency, cost, model diagnostics, and failure analysis | **Scoring layer started.** Truth-aware first-trigger scoring is separated from online observers. Aggregation, uncertainty intervals, figures, and full failure analysis still require Phase 5 data. |
 | 7 — Confirmation | More seeds/field realizations and focused robustness checks | Not started. |
 
 ## What the current Phase 3 prototype does
@@ -48,6 +48,6 @@ Generated Python caches and local test caches are ignored by Git and should not 
 1. Ask Peter to sign off on the frozen domain, budget, primary success threshold, and decision to keep noise as a separate extension.
 2. Increase the smoke run to two paired seeds and several acquisition steps, profile MES and Thompson sampling, and retain an audit row for every planned run.
 3. Run a small pre-pilot on the four smoke systems at full budget before expanding to the 24-case matrix.
-4. Implement Phase 4 as separate stopping observers using the workplan's operational definitions; keep each rule's inputs and threshold units explicit.
-5. Launch the complete paired-seed matrix only after the pre-pilot and collaborator sign-off. The NumPy screen remains diagnostic context, not a substitute for the formal comparison.
+4. Obtain collaborator sign-off on the Phase 3 finite-catalogue protocol and the Phase 4 objective-unit tolerance, false-stop risk, and repeated-look interpretation.
+5. Run the four-system full-budget pre-pilot and profile Phase 4 path-sampling cost before launching the complete paired-seed matrix. The NumPy screen remains diagnostic context, not a substitute for the formal comparison.
 

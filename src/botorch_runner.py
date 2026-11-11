@@ -23,6 +23,7 @@ from gpytorch.priors import GammaPrior
 
 from src.benchmarks import Benchmark
 from src.policies import POLICIES, PolicySettings, select_candidate
+from src.stopping import RULES, StoppingProtocol, evaluate_stopping_observers
 
 
 @dataclass(frozen=True)
@@ -136,6 +137,7 @@ def run_trajectory(
     protocol: Protocol,
     catalogue: torch.Tensor | None = None,
     budget_override: int | None = None,
+    stopping_protocol: StoppingProtocol | None = None,
 ) -> list[dict[str, Any]]:
     """Run one policy to the hard budget and return a row per observation count."""
     if policy not in POLICIES:
@@ -174,8 +176,15 @@ def run_trajectory(
         raise ValueError("budget must include initialization and fit in the catalogue")
 
     rows: list[dict[str, Any]] = []
+    incumbent_history: list[float] = []
+    first_triggers: dict[str, int | None] = {rule: None for rule in RULES}
     sampling_base = int(protocol.raw["acquisition"]["thompson_seed_base"])
     model_seed_base = int(protocol.raw["seeds"]["model_fit_seed_base"])
+    stopping_seed_base = (
+        int(stopping_protocol.raw["monte_carlo"]["seed_base"])
+        if stopping_protocol is not None
+        else 0
+    )
     while True:
         train_x = candidates[selected]
         train_y = objective_values[selected]
@@ -188,9 +197,10 @@ def run_trajectory(
         incumbent_local = int(torch.argmax(train_y).item())
         incumbent_index = int(selected[incumbent_local])
         incumbent_value = float(train_y[incumbent_local].item())
+        incumbent_history.append(incumbent_value)
         regret = max(reference_value - incumbent_value, 0.0)
         parameters = _model_parameters(model)
-        rows.append({
+        row = {
             "system": benchmark.name,
             "dimension": benchmark.dimension,
             "policy": policy,
@@ -208,7 +218,30 @@ def run_trajectory(
             "outputscale": parameters["outputscale"],
             "fit_warning_count": len(fit_warnings),
             "fit_warnings": " | ".join(fit_warnings),
-        })
+        }
+        if stopping_protocol is not None:
+            stopping = evaluate_stopping_observers(
+                protocol=stopping_protocol,
+                model=model,
+                train_y=train_y,
+                catalogue=candidates,
+                recommendation_index=incumbent_index,
+                incumbent_history=incumbent_history,
+                n_eval=len(selected),
+                initial_size=protocol.initial_size(benchmark.dimension),
+                hard_budget=budget,
+                sampling_seed=(
+                    stopping_seed_base
+                    + optimizer_seed * 1000
+                    + len(selected)
+                ),
+            )
+            row.update(stopping)
+            for rule in RULES:
+                if stopping[f"{rule}_fire"] and first_triggers[rule] is None:
+                    first_triggers[rule] = len(selected)
+                row[f"{rule}_first_trigger"] = first_triggers[rule]
+        rows.append(row)
         if len(selected) == budget:
             break
 

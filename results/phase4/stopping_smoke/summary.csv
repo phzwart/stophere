@@ -1,0 +1,4 @@
+system,dimension,policy,seed,budget,fixed_budget_first_trigger,incumbent_stagnation_first_trigger,negligible_expected_improvement_first_trigger,global_confidence_gap_first_trigger,posterior_acceptable_regret_first_trigger
+quadratic_peak,2,log_ei,0,22,22,20,20,20,20
+hidden_narrow_peak,2,log_ei,0,22,22,20,,,
+grf_long,2,log_ei,0,22,22,20,,,

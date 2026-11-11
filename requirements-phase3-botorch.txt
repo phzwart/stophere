@@ -7,4 +7,5 @@ numpy>=1.26
 matplotlib>=3.8
 pytest>=8.0
 PyYAML>=6.0
+scipy>=1.11
 

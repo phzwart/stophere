@@ -1,0 +1,35 @@
+protocol_version: 1
+status: provisional_pending_collaborator_confirmation
+
+check_schedule:
+  start_after_initial_extra: 10
+  every_evaluations: 5
+  always_check_hard_budget: true
+
+thresholds:
+  # These three values are in declared objective units, not standardized GP
+  # units and not normalized regret units. Peter must confirm the scientific
+  # scale before the full matrix is launched.
+  epsilon_objective_units: 0.02
+  stagnation_window: 10
+  stagnation_gain: 0.002
+  maximum_expected_improvement: 0.001
+
+confidence:
+  # S4 allocates this posterior error across catalogue points, two tails, and
+  # all scheduled looks using a Bonferroni correction.
+  global_gap_total_delta: 0.05
+  # S5 requires a posterior success probability of at least 1-delta. Its Monte
+  # Carlo decision error is controlled separately across scheduled looks.
+  posterior_regret_delta: 0.05
+  mc_family_error: 0.01
+
+monte_carlo:
+  num_paths: 1024
+  path_sampler: botorch_matheron_random_fourier_features
+  seed_base: 50000
+
+trajectory:
+  observers_change_acquisition: false
+  record_first_trigger_only_for_summary: true
+  hard_budget_fallback: true
