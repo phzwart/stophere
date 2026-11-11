@@ -1,0 +1,10 @@
+# Exact direct dependencies used for the verified Phase 3 smoke run.
+# Python 3.11.9, CPU execution, Windows.
+torch==2.14.1
+botorch==0.18.1
+gpytorch==1.15.2
+numpy==2.4.6
+matplotlib==3.11.2
+pytest==9.2.0
+PyYAML==6.0.3
+

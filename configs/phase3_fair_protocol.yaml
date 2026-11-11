@@ -1,0 +1,75 @@
+protocol_version: 1
+status: frozen_for_smoke_testing
+
+domain:
+  mode: finite_catalogue
+  generator: scrambled_sobol
+  catalogue_size: 2048
+  catalogue_seed_base: 314159
+  forbid_repeat_queries: true
+
+initial_design:
+  points_per_dimension: 5
+  paired_across_policies: true
+  seed_base: 10000
+
+budget:
+  dimension_2: 100
+  dimension_3: 150
+  includes_initial_design: true
+
+surrogate:
+  model: SingleTaskGP
+  kernel: matern_5_2
+  ard: true
+  input_domain: unit_hypercube
+  standardize_outcomes: true
+  dtype: float64
+  numerical_noise_variance: 1.0e-6
+  fit_after_each_observation: true
+  lengthscale_prior_shape: 3.0
+  lengthscale_prior_rate: 6.0
+  outputscale_prior_shape: 2.0
+  outputscale_prior_rate: 0.15
+
+acquisition:
+  policies:
+    - log_ei
+    - log_pi
+    - ucb
+    - thompson_sampling
+    - mes
+  batch_size: 1
+  log_pi_margin: 0.0
+  ucb_beta: 2.0
+  thompson_seed_base: 20000
+  mes_num_mv_samples: 10
+  mes_num_y_samples: 128
+
+recommendation:
+  noiseless: best_evaluated_point
+
+scoring:
+  primary_normalized_simple_regret: 0.05
+  sensitivity_thresholds:
+    - 0.01
+    - 0.02
+    - 0.05
+  reference: best_value_in_fixed_catalogue
+
+observations:
+  added_measurement_noise: false
+
+trajectory:
+  always_run_to_hard_budget: true
+  stopping_observers_change_trajectory: false
+  save_every_evaluation: true
+
+seeds:
+  model_fit_seed_base: 30000
+  observation_noise_seed_base: 40000
+  stopping_diagnostic_seed_base: 50000
+  smoke_per_case_policy: 2
+  pilot_per_case_policy: 5
+  confirmation_per_case_policy: 20
+

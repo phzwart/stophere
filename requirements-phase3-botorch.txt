@@ -1,0 +1,10 @@
+# Minimal environment for the formal Phase 3 runner and tests. The notebook and
+# presentation dependencies in requirements-phase1.txt are not required here.
+torch>=2.2
+botorch>=0.12
+gpytorch>=1.13
+numpy>=1.26
+matplotlib>=3.8
+pytest>=8.0
+PyYAML>=6.0
+

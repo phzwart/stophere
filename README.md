@@ -9,6 +9,8 @@ This project studies when Bayesian optimization can stop while still returning a
 - [Phase 1 overview](PHASE1_README.md) — core concepts, reading list, worked BO example, results, and presentation.
 - [Phase 2 overview](PHASE2_README.md) — benchmark bank, checks, and landscape gallery.
 - [Phase 3 overview](PHASE3_README.md) — exploratory acquisition/configuration characterization and its limits.
+- [Frozen Phase 3 fair protocol](docs/phase3_fair_protocol.md) — common rules for the formal five-policy BoTorch comparison.
+- [Beamline experiment translation](docs/beamline_experiment_translation.md) — what a live test could measure and what the group must decide first.
 - [Phase 3 prototype report](docs/phase3_characterization.md) — detailed methods, results, and exploratory stopping diagnostics.
 - [Documentation index](docs/README.md) — all written materials grouped by phase.
 
@@ -18,6 +20,8 @@ This project studies when Bayesian optimization can stop while still returning a
 - `examples/02_lengthscale_sensitivity.py`: Phase 1 GP misspecification example.
 - `src/benchmarks.py`: Phase 2 target functions, all maximization on normalized inputs.
 - `experiments/phase3_characterization.py`: reproducible NumPy exact-GP Phase 3 screening prototype over 9 systems and 12 configurations.
+- `src/botorch_runner.py` and `src/policies.py`: shared formal BoTorch finite-catalogue runner and the five policy-specific selectors.
+- `experiments/phase3_botorch_smoke.py`: four-system implementation smoke test; its output is not a scientific result.
 - `experiments/phase3_external_algorithms.py`: official external-solver adapter screen on six continuous 2D systems.
 - `tests/`: correctness checks for the BO example and benchmark bank.
 - `results/phase1/`: saved Phase 1 trace and numerical summary.
@@ -37,3 +41,14 @@ python -m examples.phase2_gallery
 ~~~
 
 The gallery visualizes test-function landscapes; it is not an optimization result. The Phase 3 characterization is a small fixed-hyperparameter NumPy screen, not the planned BoTorch study. It helps identify conditions and failure cases for follow-up; it does not identify a universally best method.
+
+To verify the formal Phase 3 implementation before launching the full matrix:
+
+~~~bash
+python -m pip install -r requirements-phase3-botorch.txt
+python -m pytest -q tests/test_phase3_botorch_protocol.py
+python -m experiments.phase3_botorch_smoke --seeds 1 --extra-steps 2
+~~~
+
+The smoke command deliberately uses a reduced 128-point catalogue to test all
+interfaces quickly. Formal runs use the frozen 2,048-point catalogue.

@@ -1,5 +1,18 @@
 # Phase 3: acquisition and model characterization
 
+## Formal BoTorch implementation status
+
+The fair-comparison rules are now explicit in
+`configs/phase3_fair_protocol.yaml` and explained in
+`docs/phase3_fair_protocol.md`. The shared run loop is in
+`src/botorch_runner.py`, while `src/policies.py` contains the only code that
+changes among LogEI, LogPI, UCB, Thompson sampling, and MES. The four-system
+smoke runner is `experiments/phase3_botorch_smoke.py`.
+
+Smoke-test output verifies software wiring only. It must not be reported as the
+formal Phase 3 scientific comparison. The complete matrix remains pending until
+the protocol receives collaborator sign-off and all acceptance checks pass.
+
 Phase 3 studies how acquisition choices and Gaussian-process assumptions affect Bayesian-optimization behavior. This branch builds on the validated Phase 2 benchmark bank; Phase 2 files remain available as dependencies, while Phase 3-specific code, tests, documentation, and results use explicit `phase3` names and paths.
 
 ## Phase 3 files

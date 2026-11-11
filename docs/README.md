@@ -25,6 +25,12 @@
 
 ## Phase 3 — exploratory NumPy characterization prototype
 
+- [Frozen formal Phase 3 fair-comparison protocol](phase3_fair_protocol.md)
+- [Formal BoTorch policy implementation](../src/policies.py)
+- [Shared formal BoTorch run loop](../src/botorch_runner.py)
+- [Four-system BoTorch smoke test](../experiments/phase3_botorch_smoke.py)
+- [Beamline experiment translation and open decisions](beamline_experiment_translation.md)
+
 - [Methods, MRF explanation, results, and limitations](phase3_characterization.md); this prototype does not complete the planned BoTorch Phase 3.
 - [Reproducible Phase 3 experiment](../experiments/phase3_characterization.py)
 - [Extended-budget BO policy results](phase3_budget_profiles.md)

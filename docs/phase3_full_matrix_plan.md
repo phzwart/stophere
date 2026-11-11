@@ -24,7 +24,7 @@ The 3 × 3 Ising MRF is not directly compatible with continuous box-constrained 
 
 | Family | Methods | Current status |
 | --- | --- | --- |
-| Bayesian optimization | nominal GP-UCB, EI, PI; later Thompson sampling and MES | UCB, EI, and PI prototype available |
+| Bayesian optimization | LogEI, LogPI, UCB, Thompson sampling, and MES | Shared formal BoTorch runner and all five selectors pass a reduced four-system smoke test; full-budget results remain pending |
 | Sampling baseline | random search | available |
 | Global derivative-free | BAM, SNOBFIT, MCS, CMA-ES | BAM, SNOBFIT, and CMA-ES validated on the common 2D screen; MCS remains MATLAB-only |
 | Local/direct search | NOMAD | official PyNomad adapter validated; two runs naturally terminated before 150 evaluations |
@@ -49,3 +49,6 @@ The 3 × 3 Ising MRF is not directly compatible with continuous box-constrained 
 ## Beamline meeting package
 
 The package should contain the frozen protocol, algorithm/version table, per-system results, success-versus-budget profiles, quantile spreads, failure cases, computational overhead, and a short proposal for safe beamline testing. The beamline proposal should specify the initial design, allowed control domain, failure/abort conditions, evaluation latency, data logging, and a conservative stopping policy.
+
+See `docs/beamline_experiment_translation.md` for the open experimental choices
+that must be resolved before any live deployment claim is made.
