@@ -1,0 +1,6 @@
+stopping_rule,trajectories,early_triggers,early_trigger_rate,non_trigger_rate,false_stops,false_stop_rate_among_early_triggers,unconditional_premature_stop_rate,mean_evaluations_saved,mean_evaluations_saved_when_early
+fixed_budget,4,0,0.0,0.0,0,0.0,0.0,0.0,0.0
+incumbent_stagnation,4,4,1.0,0.0,2,0.5,0.5,85.0,85.0
+negligible_expected_improvement,4,4,1.0,0.0,1,0.25,0.25,87.5,87.5
+global_confidence_gap,4,3,0.75,0.25,1,0.3333333333333333,0.25,62.5,83.33333333333333
+posterior_acceptable_regret,4,3,0.75,0.25,1,0.3333333333333333,0.25,68.75,91.66666666666667

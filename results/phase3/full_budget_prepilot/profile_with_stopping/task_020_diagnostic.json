@@ -1,0 +1,25 @@
+{
+  "purpose": "diagnostic pre-pilot run",
+  "task": {
+    "task_index": 20,
+    "system": "quadratic_peak",
+    "dimension": 2,
+    "policy": "mes",
+    "optimizer_seed": 0,
+    "field_seed": 2026
+  },
+  "phase3_protocol": "configs/phase3_fair_protocol.yaml",
+  "phase4_protocol": "configs/phase4_stopping_observers.yaml",
+  "budget_override": 25,
+  "completed_rows": 16,
+  "runtime_seconds": 7.584666199996718,
+  "final_normalized_regret": 0.0,
+  "final_success_le_0.05": 1,
+  "versions": {
+    "python": "3.11.9",
+    "torch": "2.14.1+cpu",
+    "botorch": "0.18.1",
+    "gpytorch": "1.15.2",
+    "numpy": "2.4.6"
+  }
+}

@@ -8,6 +8,9 @@ The fair-comparison rules are now explicit in
 `src/botorch_runner.py`, while `src/policies.py` contains the only code that
 changes among LogEI, LogPI, UCB, Thompson sampling, and MES. The four-system
 smoke runner is `experiments/phase3_botorch_smoke.py`.
+The resumable four-system full-budget decision gate is
+`experiments/phase3_full_budget_prepilot.py`; see
+`docs/phase3_full_budget_prepilot.md`.
 
 Smoke-test output verifies software wiring only. It must not be reported as the
 formal Phase 3 scientific comparison. The complete matrix remains pending until

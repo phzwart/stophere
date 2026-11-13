@@ -1,0 +1,5 @@
+source_file,system,dimension,policy,seed,hard_budget,saved_posterior_states,unique_selected_points,final_normalized_regret,final_success_le_0.05,stopping_checks,fit_warning_count,runtime_seconds
+task_020_full_budget.csv,quadratic_peak,2,mes,0,100,91,100,0.0,1,17,0,22.580036899991683
+task_045_full_budget.csv,hidden_narrow_peak,2,mes,0,100,91,100,0.4144552930257075,0,17,0,59.91398730000947
+task_070_full_budget.csv,grf_rough,2,mes,0,100,91,100,0.023367650245789816,1,17,0,58.293432300008135
+task_095_full_budget.csv,rosenbrock,3,mes,0,150,136,150,0.0,1,26,0,74.63871780000045

@@ -1,0 +1,43 @@
+{
+  "purpose": "implementation smoke test, not scientific results",
+  "systems": [
+    [
+      "quadratic_peak",
+      2
+    ],
+    [
+      "hidden_narrow_peak",
+      2
+    ],
+    [
+      "grf_rough",
+      2
+    ],
+    [
+      "rosenbrock",
+      3
+    ]
+  ],
+  "policies": [
+    "log_ei",
+    "log_pi",
+    "ucb",
+    "thompson_sampling",
+    "mes"
+  ],
+  "seeds": 2,
+  "extra_steps_after_initialization": 5,
+  "smoke_catalogue_size": 128,
+  "frozen_catalogue_size": 2048,
+  "planned_trajectories": 40,
+  "completed_trajectories": 40,
+  "failed_trajectories": 0,
+  "audit_path": "results\\phase3\\botorch_expanded_smoke\\run_audit.csv",
+  "versions": {
+    "python": "3.11.9",
+    "torch": "2.14.1+cpu",
+    "botorch": "0.18.1",
+    "gpytorch": "1.15.2",
+    "numpy": "2.4.6"
+  }
+}
