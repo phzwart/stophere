@@ -162,24 +162,33 @@ def make_final_success_plot(rows: list[dict], path: Path, final_eval: int) -> No
     y = np.arange(len(selected))
 
     fig, ax = plt.subplots(figsize=(10.5, 7.5))
-    ax.barh(y, median, color="#4C78A8", alpha=0.88, label="Median across systems")
-    ax.errorbar(
-        median, y,
-        xerr=np.vstack((median - q25, q75 - median)),
-        fmt="none", ecolor="#1F2937", elinewidth=1.5, capsize=4,
-        label="25th-75th percentile across systems",
+    for index in range(len(selected)):
+        ax.plot(
+            [q25[index], q75[index]], [y[index], y[index]],
+            color="#4C78A8", linewidth=8, solid_capstyle="butt", alpha=0.55,
+        )
+        ax.scatter(
+            [q25[index], q75[index]], [y[index], y[index]],
+            marker="|", s=150, linewidths=2, color="#1F2937", zorder=3,
+        )
+    ax.scatter(
+        median, y, marker="o", s=58, color="#1F2937", zorder=4,
+        label="Median system success",
     )
-    ax.scatter(pooled, y, marker="D", s=28, color="#D97706", zorder=3,
-               label="Pooled across runs")
+    ax.scatter(
+        pooled, y, marker="D", s=38, color="#D97706", zorder=4,
+        label="Pooled success across runs",
+    )
     ax.set_yticks(y, labels)
     ax.set_xlim(0.0, 1.04)
     ax.set_xlabel("Success rate (normalized simple regret ≤ 0.05)")
     ax.set_title(f"Success spread at {final_eval} evaluations")
     ax.grid(axis="x", color="#D1D5DB", alpha=0.65)
-    ax.legend(loc="lower right", frameon=False)
+    ax.legend(loc="center left", frameon=False)
     fig.text(
         0.01, 0.01,
-        "Bars and whiskers describe variation across benchmark systems; they are not confidence intervals.",
+        "Blue intervals are the 25th-75th percentiles across systems; they are not confidence intervals. "
+        "A collapsed interval means those three quantiles are equal.",
         fontsize=9, color="#4B5563",
     )
     fig.tight_layout(rect=(0, 0.04, 1, 1))
@@ -195,7 +204,7 @@ def make_budget_success_plot(
     configs: tuple[str, ...] = PROFILE_CONFIGS,
 ) -> None:
     checkpoints = tuple(int(value) for value in checkpoints)
-    fig, ax = plt.subplots(figsize=(10.5, 6.3))
+    fig, axes = plt.subplots(1, 2, figsize=(14.5, 6.3), sharex=True, sharey=True)
     plotted = 0
     for config in configs:
         series = sorted(
@@ -210,22 +219,34 @@ def make_budget_success_plot(
         q25 = np.asarray([row["system_success_q25"] for row in series], dtype=float)
         q75 = np.asarray([row["system_success_q75"] for row in series], dtype=float)
         color = PROFILE_COLORS.get(config, "#3366AA")
-        ax.plot(x, pooled, marker="o", linewidth=2.0, color=color,
-                label=DISPLAY_NAMES.get(config, config))
-        ax.fill_between(x, q25, q75, color=color, alpha=0.12)
+        median = np.asarray(
+            [row["system_success_median"] for row in series], dtype=float
+        )
+        label = DISPLAY_NAMES.get(config, config)
+        axes[0].plot(
+            x, pooled, marker="o", linewidth=2.0, color=color, label=label
+        )
+        axes[1].plot(
+            x, median, marker="o", linewidth=2.0, color=color, label=label
+        )
+        axes[1].fill_between(x, q25, q75, color=color, alpha=0.13)
         plotted += 1
     if not plotted:
         raise ValueError("none of the requested configurations are present")
-    ax.set_xticks(checkpoints)
-    ax.set_ylim(0.0, 1.04)
-    ax.set_xlabel("Function evaluations")
-    ax.set_ylabel("Pooled success rate")
-    ax.set_title("Success versus evaluation budget")
-    ax.grid(color="#D1D5DB", alpha=0.65)
-    ax.legend(loc="lower right", frameon=False)
+    for ax in axes:
+        ax.set_xticks(checkpoints)
+        ax.set_ylim(0.0, 1.04)
+        ax.set_xlabel("Function evaluations")
+        ax.grid(color="#D1D5DB", alpha=0.65)
+    axes[0].set_ylabel("Success rate")
+    axes[0].set_title("A. Pooled across all runs")
+    axes[1].set_title("B. Median system and interquartile spread")
+    axes[1].legend(loc="lower right", frameon=False, fontsize=9)
+    fig.suptitle("Success versus evaluation budget")
     fig.text(
         0.01, 0.01,
-        "Lines pool all runs. Shaded bands show the 25th-75th percentile of system-level success rates.",
+        "Panel A and Panel B answer different questions. The shaded bands in Panel B are descriptive "
+        "25th-75th percentiles across systems, not uncertainty around Panel A.",
         fontsize=9, color="#4B5563",
     )
     fig.tight_layout(rect=(0, 0.04, 1, 1))

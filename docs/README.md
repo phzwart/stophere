@@ -35,7 +35,10 @@
 - [Reproducible Phase 3 experiment](../experiments/phase3_characterization.py)
 - [Extended-budget BO policy results](phase3_budget_profiles.md)
 - [External derivative-free algorithm results](phase3_external_algorithms.md)
+- [Random-baseline exact-probability audit](random_baseline_audit.md)
+- [Real scattering data workflow and privacy boundary](real_data_workflow.md)
 - [Full comparison matrix plan](phase3_full_matrix_plan.md)
+- [Completed full-budget pre-pilot](phase3_full_budget_prepilot.md)
 - [Per-system/configuration summary](../results/phase3/characterization/summary.csv)
 - [Paired changes versus nominal GP](../results/phase3/characterization/comparison_deltas.csv)
 - [Exploratory stopping diagnostics](../results/phase3/characterization/stopping_rules.csv)
@@ -43,6 +46,11 @@
 - [Summary plot](../results/phase3/characterization/characterization_summary.png)
 - [External algorithm audit table](../results/phase3/external_algorithms/run_status.csv)
 - [External success-versus-budget plot](../results/phase3/external_algorithms/success_by_budget.png)
+- [Random-baseline audit plot](../results/phase3/random_baseline_audit/random_baseline_audit.png)
+- [Formal pre-pilot trajectory overlays](../results/phase3/full_budget_prepilot/trajectory_overlays_2d.png)
+- [Formal pre-pilot policy summary](../results/phase3/full_budget_prepilot/policy_summary.csv)
+- [Formal pre-pilot stopping summary](../results/phase3/full_budget_prepilot/stopping_observer_summary.csv)
+- [Formal pre-pilot summary figure](../results/phase3/full_budget_prepilot/prepilot_summary.png)
 
 ## Project navigation
 

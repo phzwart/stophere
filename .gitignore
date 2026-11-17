@@ -1,6 +1,9 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+data_private/
+private_data/
+results/phase5/als_offline_replay_private/
 .ipynb_checkpoints/
 .venv/
 build/

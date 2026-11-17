@@ -25,6 +25,12 @@ def test_protocol_freezes_paired_initial_design_and_dimension_budgets():
     assert first.tolist() == second.tolist()
 
 
+def test_protocol_supports_fixed_initial_size_for_real_data_replay():
+    protocol = Protocol({"initial_design": {"fixed_points": 25}})
+    assert protocol.initial_size(2) == 25
+    assert protocol.initial_size(7) == 25
+
+
 def test_catalogue_is_repeatable_and_inside_unit_hypercube():
     protocol = Protocol.load(PROTOCOL_PATH)
     first = make_catalogue(2, protocol)

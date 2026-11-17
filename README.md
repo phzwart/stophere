@@ -11,6 +11,8 @@ This project studies when Bayesian optimization can stop while still returning a
 - [Phase 3 overview](PHASE3_README.md) — exploratory acquisition/configuration characterization and its limits.
 - [Frozen Phase 3 fair protocol](docs/phase3_fair_protocol.md) — common rules for the formal five-policy BoTorch comparison.
 - [Beamline experiment translation](docs/beamline_experiment_translation.md) — what a live test could measure and what the group must decide first.
+- [Real scattering data workflow](docs/real_data_workflow.md) — privacy boundary, data audit, and provisional ALS offline replays.
+- [Full-budget pre-pilot](docs/phase3_full_budget_prepilot.md) — the completed 100-trajectory formal decision gate.
 - [Phase 3 prototype report](docs/phase3_characterization.md) — detailed methods, results, and exploratory stopping diagnostics.
 - [Documentation index](docs/README.md) — all written materials grouped by phase.
 
@@ -22,6 +24,8 @@ This project studies when Bayesian optimization can stop while still returning a
 - `experiments/phase3_characterization.py`: reproducible NumPy exact-GP Phase 3 screening prototype over 9 systems and 12 configurations.
 - `src/botorch_runner.py` and `src/policies.py`: shared formal BoTorch finite-catalogue runner and the five policy-specific selectors.
 - `experiments/phase3_botorch_smoke.py`: four-system implementation smoke test; its output is not a scientific result.
+- `experiments/phase3_full_budget_prepilot.py`: resumable four-system, five-policy, five-seed full-budget pre-pilot.
+- `experiments/real_data_*.py`: reusable private-data inventory, visualization, mapping-replay, and optimization-replay tools; private inputs and derived outputs are not committed.
 - `experiments/phase3_external_algorithms.py`: official external-solver adapter screen on six continuous 2D systems.
 - `tests/`: correctness checks for the BO example and benchmark bank.
 - `results/phase1/`: saved Phase 1 trace and numerical summary.
@@ -29,6 +33,7 @@ This project studies when Bayesian optimization can stop while still returning a
 - `results/phase3/characterization/`: Phase 3 per-step traces, per-system summaries, paired deltas, exploratory stop-diagnostic outcomes, and comparison plot.
 - `results/phase3/mrf_bo_pilot/`: retained first MRF pilot, with a different protocol from the later matrix; do not pool the two result sets.
 - `results/phase3/external_algorithms/`: separate continuous-domain CMA-ES, SNOBFIT, NOMAD, BAM, and random screen; do not pool it with the finite-catalogue BO prototype.
+- `results/phase3/full_budget_prepilot/`: all 100 formal pre-pilot trajectories, summaries, and representative trajectory overlays.
 
 ## Quick start
 

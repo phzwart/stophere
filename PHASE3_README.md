@@ -12,9 +12,12 @@ The resumable four-system full-budget decision gate is
 `experiments/phase3_full_budget_prepilot.py`; see
 `docs/phase3_full_budget_prepilot.md`.
 
-Smoke-test output verifies software wiring only. It must not be reported as the
-formal Phase 3 scientific comparison. The complete matrix remains pending until
-the protocol receives collaborator sign-off and all acceptance checks pass.
+Smoke-test output verifies software wiring only. The complete 100-trajectory
+four-system pre-pilot is now available under
+`results/phase3/full_budget_prepilot/`. It is the decision gate for protocol
+revision, not the final 24-system scientific comparison. The complete matrix
+remains pending until the protocol receives collaborator sign-off and all
+acceptance checks pass.
 
 Phase 3 studies how acquisition choices and Gaussian-process assumptions affect Bayesian-optimization behavior. This branch builds on the validated Phase 2 benchmark bank; Phase 2 files remain available as dependencies, while Phase 3-specific code, tests, documentation, and results use explicit `phase3` names and paths.
 
@@ -24,6 +27,10 @@ Phase 3 studies how acquisition choices and Gaussian-process assumptions affect 
 - `experiments/phase3_success_profiles.py`: pooled success and cross-system quantile summaries.
 - `experiments/phase3_budget_profiles.py`: extended 5/10/20/50/100/150-evaluation BO-policy screen.
 - `experiments/phase3_external_algorithms.py`: official CMA-ES, SNOBFIT, NOMAD, and BAM adapter screen on the common continuous 2D scope.
+- `experiments/phase3_random_baseline_audit.py`: exact without-replacement audit of the random-search success profile.
+- `experiments/phase3_trajectory_visuals.py`: objective heat maps with initial points, later queries, recommendations, optima, and first stop signals.
+- `experiments/phase3_run_prepilot_batch.py`: resumable bounded-parallel executor for missing pre-pilot tasks.
+- `experiments/phase3_summarize_prepilot.py`: policy, warning, and truth-aware stopping aggregation for the full-budget pre-pilot.
 - `tests/test_phase3_characterization.py`: scientific and software checks for the Phase 3 runner.
 - `tests/test_phase3_external_algorithms.py`: optional-dependency adapter and strict-budget smoke tests.
 - `docs/phase3_characterization.md`: methods, results, limitations, and next steps.
@@ -33,6 +40,7 @@ Phase 3 studies how acquisition choices and Gaussian-process assumptions affect 
 - `results/phase3/characterization/`: raw trajectories, summaries, paired deltas, exploratory stopping diagnostics, and summary plot.
 - `results/phase3/mrf_bo_pilot/`: earlier MRF pilot retained as a separate historical protocol.
 - `results/phase3/external_algorithms/`: continuous 2D external-algorithm trajectories, audit table, success profiles, and figures.
+- `results/phase3/random_baseline_audit/`: exact and observed random-search success probabilities.
 
 ## Run the prototype
 

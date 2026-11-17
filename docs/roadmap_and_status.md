@@ -8,10 +8,10 @@ This page separates Peter's original phase plan from the exploratory work added 
 | --- | --- | --- |
 | 1 — Foundations | Reading list, primer, and visual BO example | Learning materials, example, results, and presentation are in the repository. |
 | 2 — Test functions | Validate the 24 continuous 2D/3D benchmarks; add the separately reported MRF extension | Benchmark bank, tests, documentation, and generated 2D/3D gallery figures are present. The Phase 2 benchmark tests pass (33 tests). The 3×3 Ising MRF is an auxiliary discrete extension—not part of the 24 continuous cases. |
-| 3 — Acquisition methods | Implement EI, PI, UCB, Thompson sampling, and MES in BoTorch under a common protocol | **Expanded smoke complete; pre-pilot started.** All five policies completed a 40-trajectory, two-seed expanded smoke with no failed runs or fit warnings. A one-policy/one-seed full-budget slice now covers all four pre-pilot systems. The complete paired policy/seed pre-pilot remains pending, so no policy ranking is claimed. |
-| 4 — Stopping rules | Implement the five specified stopping approaches with shared diagnostics and model-aware uncertainty | **Implementation smoke complete; thresholds still provisional.** All five formal observers, first-trigger logging, repeated-look corrections, hard-budget fallback, documentation, and trajectory-invariance tests are present. Four full-budget MES trajectories now exercise the observers, but scientific thresholds still require collaborator confirmation. |
+| 3 — Acquisition methods | Implement EI, PI, UCB, Thompson sampling, and MES in BoTorch under a common protocol | **Expanded smoke and full-budget pre-pilot complete.** All five policies completed the 40-trajectory smoke and the 100-trajectory paired pre-pilot. The pooled pre-pilot success rate is 70%; the four-system sample is a decision gate, not a final ranking. |
+| 4 — Stopping rules | Implement the five specified stopping approaches with shared diagnostics and model-aware uncertainty | **Implementation and 100-trajectory pre-pilot scoring complete; thresholds still provisional.** All five observers, first-trigger logging, repeated-look corrections, hard-budget fallback, documentation, invariance tests, and truth-aware summaries are present. False-stop rates remain too high for live use. |
 | 5 — Pilot screen | Full 24-case × 5-acquisition × 5-seed BoTorch pilot, plus random reference | **Execution scaffold present; matrix not launched.** A deterministic 600-task manifest and resumable per-task runner are available. The current 540-trajectory NumPy matrix and separate continuous external-optimizer screen remain diagnostic context, not substitutes for the formal pilot. |
-| 6 — Reliability analysis | Regret, success, false-stop frequency, cost, model diagnostics, and failure analysis | **Scoring layer started.** Truth-aware first-trigger scoring is separated from online observers. Aggregation, uncertainty intervals, figures, and full failure analysis still require Phase 5 data. |
+| 6 — Reliability analysis | Regret, success, false-stop frequency, cost, model diagnostics, and failure analysis | **Pre-pilot scoring layer complete.** Truth-aware first-trigger scoring is separated from online observers; policy summaries, stopping summaries, quantile figures, random-search probability audit, and trajectory overlays are present. Full reliability claims still require Phase 5 and confirmation data. |
 | 7 — Confirmation | More seeds/field realizations and focused robustness checks | Not started. |
 
 ## What the current Phase 3 prototype does
@@ -47,9 +47,9 @@ Generated Python caches and local test caches are ignored by Git and should not 
 
 1. Ask Peter to sign off on the frozen domain, budget, primary success threshold, and decision to keep noise as a separate extension.
 2. **Completed:** run two paired smoke seeds with five acquisition steps, profile all policies, and retain an audit row for every planned run.
-3. **Started:** run the four-system full-budget pre-pilot. The MES/seed-0 slice is complete; the other 96 acquisition/seed tasks remain.
+3. **Completed:** run and aggregate the 100-trajectory four-system full-budget pre-pilot.
 4. Obtain collaborator sign-off on the Phase 3 finite-catalogue protocol and the Phase 4 objective-unit tolerance, false-stop risk, and repeated-look interpretation.
-5. Complete the paired pre-pilot, profile Phase 4 cost across policies and difficult landscapes, and freeze protocol v2 before the 600-task matrix. The NumPy screen remains diagnostic context, not a substitute for the formal comparison.
+5. Use the completed pre-pilot, real ALS offline replay, and collaborator decisions to freeze protocol v2 before the 600-task matrix. The NumPy screen remains diagnostic context, not a substitute for the formal comparison.
 
 The expanded smoke runner now records one status/runtime row per planned
 trajectory. The resumable 100-task full-budget pre-pilot entry point and
@@ -77,4 +77,34 @@ full scientific matrix.
   and 7.08 seconds without them on the same machine, about 7% overhead in this
   diagnostic case. Full-budget runtimes ranged from 22.6 to 74.6 seconds for
   the four completed trajectories.
+
+## 2026-11-17 execution update
+
+- Full-budget pre-pilot: 100/100 trajectories complete across four systems,
+  five policies, and five paired seeds. Pooled success is 70%. LogEI, LogPI,
+  UCB, and MES each achieved 75%; Thompson sampling achieved 50%.
+- The hidden narrow peak is the dominant failure. It was solved in only two of
+  25 policy-seed runs. Thompson sampling also failed every rough-field run.
+- The provisional stopping rules saved 53-84 evaluations on average but
+  false-stopped 24-50% of all trajectories. The thresholds are not ready for
+  live deployment.
+- One GP optimization warning occurred in one of 100 trajectories; the run
+  completed and succeeded, and the warning is retained for auditability.
+- The random-search plateau was checked against its exact
+  without-replacement success probability. The exact expectation increases
+  from 59.5% at 100 evaluations to 66.8% at 150, while the five-seed observed
+  value remains 62.5% at both checkpoints.
+- Private processed ALS and PETRA III data were downloaded and audited. The
+  processed ALS archive contains a complete 57-by-57 grid of reduced spectra,
+  which supports offline replay without committing private data.
+- A five-seed ALS mapping replay compared maximum posterior variance with
+  random sampling from the same 25 starting measurements. At 99 measurements,
+  maximum variance had lower mean normalized map RMSE (0.2860 versus 0.2995)
+  and lower maximum posterior uncertainty (0.2294 versus 0.3211). This uses a
+  provisional q-at-raw-maximum response and fixed published length scales.
+- A one-seed ALS optimization replay ran all five formal BoTorch policies to
+  99 measurements. MES found the catalogue best point; LogEI and UCB reached
+  normalized regret 0.0060; LogPI and Thompson sampling remained near 0.18.
+  This validates real-data ingestion and replay, but is not a scientific policy
+  ranking because the target is provisional and variability is not measured.
 

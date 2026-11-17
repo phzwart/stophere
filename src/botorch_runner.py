@@ -39,6 +39,8 @@ class Protocol:
         return cls(raw=raw)
 
     def initial_size(self, dimension: int) -> int:
+        if "fixed_points" in self.raw["initial_design"]:
+            return int(self.raw["initial_design"]["fixed_points"])
         return int(self.raw["initial_design"]["points_per_dimension"]) * dimension
 
     def budget(self, dimension: int) -> int:

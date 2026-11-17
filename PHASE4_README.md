@@ -18,3 +18,11 @@ Implemented components:
 
 The full Phase 4 comparison must wait for the objective-unit tolerance and risk
 level to be confirmed. The default 0.02 tolerance is explicitly provisional.
+
+The observers have also been scored on all 100 completed full-budget Phase 3
+pre-pilot trajectories. Under the provisional thresholds, they saved 53-84
+evaluations on average but false-stopped 24-50% of all trajectories. These
+results demonstrate the evaluation pipeline and show that the current
+thresholds are not safe for live deployment; they do not validate a stopping
+rule. See `docs/phase3_full_budget_prepilot.md` and
+`results/phase3/full_budget_prepilot/stopping_observer_summary.csv`.

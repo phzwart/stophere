@@ -1,0 +1,6 @@
+policy,trajectories,systems,pooled_success_rate,system_success_q25,system_success_median,system_success_q75,median_final_normalized_regret,maximum_fit_warning_count
+log_ei,20,4,0.75,0.65,0.9,1.0,0.0,1
+log_pi,20,4,0.75,0.65,0.9,1.0,0.0,0
+mes,20,4,0.75,0.75,1.0,1.0,0.0,0
+thompson_sampling,20,4,0.5,0.0,0.5,1.0,0.028287869663533298,0
+ucb,20,4,0.75,0.75,1.0,1.0,0.0,0
