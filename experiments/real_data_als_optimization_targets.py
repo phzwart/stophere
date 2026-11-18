@@ -285,7 +285,7 @@ def main() -> None:
     parser.add_argument("grid_root", type=Path)
     parser.add_argument(
         "--config", type=Path,
-        default=Path("configs/phase5_als_optimization_targets_provisional.yaml"),
+        default=Path("configs/phase3_als_optimization_targets_provisional.yaml"),
     )
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()

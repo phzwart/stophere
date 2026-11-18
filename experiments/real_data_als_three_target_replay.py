@@ -595,11 +595,11 @@ def main() -> None:
     parser.add_argument("catalogue_csv", type=Path)
     parser.add_argument(
         "--target-config", type=Path,
-        default=Path("configs/phase5_als_optimization_targets_provisional.yaml"),
+        default=Path("configs/phase3_als_optimization_targets_provisional.yaml"),
     )
     parser.add_argument(
         "--phase3", type=Path,
-        default=Path("configs/phase5_als_three_target_replay_provisional.yaml"),
+        default=Path("configs/phase3_als_three_target_replay_provisional.yaml"),
     )
     parser.add_argument(
         "--phase4", type=Path,

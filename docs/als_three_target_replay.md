@@ -1,8 +1,8 @@
-# ALS three-target offline optimization replay
+# Phase 3: ALS three-target offline optimization replay
 
 ## Purpose
 
-This workflow turns the processed ALS reduced spectra into a finite measured
+This Phase 3 workflow turns the processed ALS reduced spectra into a finite measured
 catalogue and asks three different optimization questions:
 
 1. maximize total integrated intensity;
@@ -49,7 +49,7 @@ recommendation rule, and the same provisional success definition. No
 synthetic measurement noise is added. A small declared observation-noise term
 is used for numerical regularization.
 
-The Phase 4 stopping rules are passive observers: they see only information
+The Phase 4 stopping observers are included as a paired diagnostic: they see only information
 available at the current evaluation, record their first trigger, and never
 change the acquisition trajectory. Truth-aware regret and false-stop scoring
 are computed only after the replay.

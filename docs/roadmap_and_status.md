@@ -8,9 +8,9 @@ This page separates Peter's original phase plan from the exploratory work added 
 | --- | --- | --- |
 | 1 — Foundations | Reading list, primer, and visual BO example | Learning materials, example, results, and presentation are in the repository. |
 | 2 — Test functions | Validate the 24 continuous 2D/3D benchmarks; add the separately reported MRF extension | Benchmark bank, tests, documentation, and generated 2D/3D gallery figures are present. The Phase 2 benchmark tests pass (33 tests). The 3×3 Ising MRF is an auxiliary discrete extension—not part of the 24 continuous cases. |
-| 3 — Acquisition methods | Implement EI, PI, UCB, Thompson sampling, and MES in BoTorch under a common protocol | **Expanded smoke and full-budget pre-pilot complete.** All five policies completed the 40-trajectory smoke and the 100-trajectory paired pre-pilot. The pooled pre-pilot success rate is 70%; the four-system sample is a decision gate, not a final ranking. |
-| 4 — Stopping rules | Implement the five specified stopping approaches with shared diagnostics and model-aware uncertainty | **Implementation and 100-trajectory pre-pilot scoring complete; thresholds still provisional.** All five observers, first-trigger logging, repeated-look corrections, hard-budget fallback, documentation, invariance tests, and truth-aware summaries are present. False-stop rates remain too high for live use. |
-| 5 — Pilot screen | Full 24-case × 5-acquisition × 5-seed BoTorch pilot, plus random reference | **Execution scaffold present; matrix not launched.** A deterministic 600-task manifest and resumable per-task runner are available. The current 540-trajectory NumPy matrix and separate continuous external-optimizer screen remain diagnostic context, not substitutes for the formal pilot. |
+| 3 — Acquisition methods | Implement and compare EI, PI, UCB, Thompson sampling, and MES in BoTorch under a common protocol | **Implementation, synthetic pre-pilot, and real ALS optimization pre-pilot complete.** The 100-trajectory four-system pre-pilot and 90-trajectory three-target ALS replay are decision evidence, not a final ranking. The 24-case formal comparison remains unfinished. |
+| 4 — Stopping rules | Implement and evaluate the five specified stopping approaches with shared diagnostics and model-aware uncertainty | **Observer implementation and provisional scoring complete.** The five observers were evaluated on the same ALS optimization trajectories; thresholds remain provisional and false-stop rates on sparse targets are too high for live use. |
+| 5 — Pilot screen | Run the full 24-case × 5-acquisition × 5-seed formal matrix, plus random reference | **Scaffold present; execution not started.** A deterministic 600-task manifest and resumable runner are available. The ALS three-target replay is categorized under Phase 3 acquisition comparison and Phase 4 stopping diagnostics; it does not replace this synthetic benchmark matrix. |
 | 6 — Reliability analysis | Regret, success, false-stop frequency, cost, model diagnostics, and failure analysis | **Pre-pilot scoring layer complete.** Truth-aware first-trigger scoring is separated from online observers; policy summaries, stopping summaries, quantile figures, random-search probability audit, and trajectory overlays are present. Full reliability claims still require Phase 5 and confirmation data. |
 | 7 — Confirmation | More seeds/field realizations and focused robustness checks | Not started. |
 
@@ -49,7 +49,7 @@ Generated Python caches and local test caches are ignored by Git and should not 
 2. **Completed:** run two paired smoke seeds with five acquisition steps, profile all policies, and retain an audit row for every planned run.
 3. **Completed:** run and aggregate the 100-trajectory four-system full-budget pre-pilot.
 4. Obtain collaborator sign-off on the Phase 3 finite-catalogue protocol and the Phase 4 objective-unit tolerance, false-stop risk, and repeated-look interpretation.
-5. Use the completed pre-pilot, real ALS offline replay, and collaborator decisions to freeze protocol v2 before the 600-task matrix. The NumPy screen remains diagnostic context, not a substitute for the formal comparison.
+5. Finish the real-data optimization pre-pilot protocol review and use Peter's decisions to freeze Phase 3/4 protocol v2 before the Phase 5 600-task synthetic matrix. Mapping is outside the current project priority.
 
 The expanded smoke runner now records one status/runtime row per planned
 trajectory. The resumable 100-task full-budget pre-pilot entry point and
@@ -110,16 +110,16 @@ full scientific matrix.
 
 ## 2026-11-18 execution update
 
-- The processed ALS spectra were converted into three provisional optimization
+- The processed ALS spectra were converted into three provisional Phase 3 optimization
   targets: total integrated intensity, maximum detected peak height, and
   minimum peak FWHM.
-- A resumable paired replay now compares LogEI, LogPI, UCB, Thompson sampling,
+- A resumable paired Phase 3 replay now compares LogEI, LogPI, UCB, Thompson sampling,
   MES, and a random-search reference with the same measured catalogue, 25-point
   Sobol initialization, 99-measurement budget, GP surrogate, recommendation
   rule, and retrospective scoring.
 - All five passive stopping observers are evaluated without changing any
   acquisition trajectory or using future observations or the true optimum.
-- The reusable code, tests, and declared provisional protocol are committed.
+- The reusable Phase 3 code, tests, and declared provisional protocol are committed.
   The private source data and all data-derived trajectories, figures, and
   numerical summaries remain outside the repository pending approval to share.
 - The main scientific gate is now target definition and risk calibration, not

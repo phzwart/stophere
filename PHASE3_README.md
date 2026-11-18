@@ -2,6 +2,12 @@
 
 ## Formal BoTorch implementation status
 
+The ALS three-target offline optimization pre-pilot is part of Phase 3 because
+it compares acquisition policies on measured objective values. Its passive
+stopping scores are a Phase 4 diagnostic on those same trajectories. It is not
+the Phase 5 full synthetic benchmark matrix. See
+`docs/als_three_target_replay.md`.
+
 The fair-comparison rules are now explicit in
 `configs/phase3_fair_protocol.yaml` and explained in
 `docs/phase3_fair_protocol.md`. The shared run loop is in

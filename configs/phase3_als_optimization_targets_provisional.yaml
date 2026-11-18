@@ -33,7 +33,7 @@ objectives:
     definition: width_of_selected_peak_at_half_prominence
 
 optimization:
-  protocol: configs/phase5_als_three_target_replay_provisional.yaml
+  protocol: configs/phase3_als_three_target_replay_provisional.yaml
   initial_points: 25
   hard_budget: 99
   paired_seeds: 5
