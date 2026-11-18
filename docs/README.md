@@ -37,6 +37,7 @@
 - [External derivative-free algorithm results](phase3_external_algorithms.md)
 - [Random-baseline exact-probability audit](random_baseline_audit.md)
 - [Real scattering data workflow and privacy boundary](real_data_workflow.md)
+- [ALS three-target offline optimization replay](als_three_target_replay.md)
 - [Full comparison matrix plan](phase3_full_matrix_plan.md)
 - [Completed full-budget pre-pilot](phase3_full_budget_prepilot.md)
 - [Per-system/configuration summary](../results/phase3/characterization/summary.csv)

@@ -22,7 +22,7 @@ from gpytorch.mlls import ExactMarginalLogLikelihood
 from gpytorch.priors import GammaPrior
 
 from src.benchmarks import Benchmark
-from src.policies import POLICIES, PolicySettings, select_candidate
+from src.policies import SUPPORTED_POLICIES, PolicySettings, select_candidate
 from src.stopping import RULES, StoppingProtocol, evaluate_stopping_observers
 
 
@@ -142,7 +142,7 @@ def run_trajectory(
     stopping_protocol: StoppingProtocol | None = None,
 ) -> list[dict[str, Any]]:
     """Run one policy to the hard budget and return a row per observation count."""
-    if policy not in POLICIES:
+    if policy not in SUPPORTED_POLICIES:
         raise ValueError(f"unknown policy {policy!r}")
     if benchmark.dimension not in (2, 3):
         raise ValueError("formal continuous Phase 3 currently supports 2D and 3D")

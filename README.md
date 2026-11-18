@@ -12,6 +12,7 @@ This project studies when Bayesian optimization can stop while still returning a
 - [Frozen Phase 3 fair protocol](docs/phase3_fair_protocol.md) — common rules for the formal five-policy BoTorch comparison.
 - [Beamline experiment translation](docs/beamline_experiment_translation.md) — what a live test could measure and what the group must decide first.
 - [Real scattering data workflow](docs/real_data_workflow.md) — privacy boundary, data audit, and provisional ALS offline replays.
+- [ALS three-target replay](docs/als_three_target_replay.md) — provisional integrated-intensity, peak-height, and FWHM optimization workflow.
 - [Full-budget pre-pilot](docs/phase3_full_budget_prepilot.md) — the completed 100-trajectory formal decision gate.
 - [Phase 3 prototype report](docs/phase3_characterization.md) — detailed methods, results, and exploratory stopping diagnostics.
 - [Documentation index](docs/README.md) — all written materials grouped by phase.
@@ -25,7 +26,7 @@ This project studies when Bayesian optimization can stop while still returning a
 - `src/botorch_runner.py` and `src/policies.py`: shared formal BoTorch finite-catalogue runner and the five policy-specific selectors.
 - `experiments/phase3_botorch_smoke.py`: four-system implementation smoke test; its output is not a scientific result.
 - `experiments/phase3_full_budget_prepilot.py`: resumable four-system, five-policy, five-seed full-budget pre-pilot.
-- `experiments/real_data_*.py`: reusable private-data inventory, visualization, mapping-replay, and optimization-replay tools; private inputs and derived outputs are not committed.
+- `experiments/real_data_*.py`: reusable private-data inventory, visualization, mapping-replay, target-extraction, and optimization-replay tools; private inputs and derived outputs are not committed.
 - `experiments/phase3_external_algorithms.py`: official external-solver adapter screen on six continuous 2D systems.
 - `tests/`: correctness checks for the BO example and benchmark bank.
 - `results/phase1/`: saved Phase 1 trace and numerical summary.

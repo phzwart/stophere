@@ -1,0 +1,42 @@
+protocol_version: 1
+status: provisional_pending_physics_review
+
+source:
+  dataset_doi: 10.5061/dryad.p2ngf1w4t
+  facility: ALS_BL7.3.3
+  sample: dried_sodium_chloride_on_kapton
+  input: reduced_azimuthal_integration_hdf5
+  q_window: full_common_measured_range
+
+preprocessing:
+  sort_by_q: true
+  savgol_window_points: 11
+  savgol_polynomial_order: 3
+  peak_minimum_distance_points: 5
+  peak_prominence_error_multiplier: 5.0
+  peak_prominence_robust_range_fraction: 0.01
+  fwhm_definition: full_width_at_half_prominence
+  invalid_fwhm_penalty_range_fraction: 0.10
+
+objectives:
+  integrated_intensity:
+    source_column: integrated_intensity
+    direction: maximize
+    definition: trapezoidal_integral_of_raw_reduced_intensity_over_full_q_range
+  maximum_peak_height:
+    source_column: maximum_peak_height
+    direction: maximize
+    definition: tallest_detected_interior_peak_in_smoothed_profile
+  minimum_fwhm:
+    source_column: fwhm_for_optimization
+    direction: minimize
+    definition: width_of_selected_peak_at_half_prominence
+
+optimization:
+  protocol: configs/phase5_als_three_target_replay_provisional.yaml
+  initial_points: 25
+  hard_budget: 99
+  paired_seeds: 5
+  policies: [log_ei, log_pi, ucb, thompson_sampling, mes]
+  reference_policies: [random]
+  observers_change_trajectory: false

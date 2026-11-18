@@ -65,3 +65,25 @@ def test_short_log_ei_run_has_no_duplicates_and_replays_exactly():
     assert len(selected) == len(set(selected)) == 11
     assert first[-1]["normalized_regret"] <= first[0]["normalized_regret"]
 
+
+def test_short_random_reference_is_deterministic_and_without_replacement():
+    protocol = Protocol.load(PROTOCOL_PATH)
+    benchmark = get_benchmark("quadratic_peak", 2)
+    first = run_trajectory(
+        benchmark=benchmark,
+        policy="random",
+        optimizer_seed=3,
+        protocol=protocol,
+        budget_override=12,
+    )
+    second = run_trajectory(
+        benchmark=benchmark,
+        policy="random",
+        optimizer_seed=3,
+        protocol=protocol,
+        budget_override=12,
+    )
+    selected = json.loads(first[-1]["selected_indices"])
+    assert selected == json.loads(second[-1]["selected_indices"])
+    assert len(selected) == len(set(selected)) == 12
+

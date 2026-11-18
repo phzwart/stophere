@@ -14,6 +14,8 @@ from botorch.generation.sampling import MaxPosteriorSampling
 
 
 POLICIES = ("log_ei", "log_pi", "ucb", "thompson_sampling", "mes")
+REFERENCE_POLICIES = ("random",)
+SUPPORTED_POLICIES = POLICIES + REFERENCE_POLICIES
 
 
 @dataclass(frozen=True)
@@ -46,12 +48,21 @@ def select_candidate(
     The caller owns the common BO loop. This function contains the only logic
     that changes between acquisition policies.
     """
-    if policy not in POLICIES:
-        raise ValueError(f"unknown policy {policy!r}; expected one of {POLICIES}")
+    if policy not in SUPPORTED_POLICIES:
+        raise ValueError(
+            f"unknown policy {policy!r}; expected one of {SUPPORTED_POLICIES}"
+        )
     if available_candidates.ndim != 2 or available_candidates.shape[0] == 0:
         raise ValueError("available_candidates must be a non-empty n-by-d tensor")
 
     best_f = train_y.max()
+    if policy == "random":
+        generator = torch.Generator(device=available_candidates.device)
+        generator.manual_seed(sampling_seed)
+        return int(torch.randint(
+            available_candidates.shape[0], (1,), generator=generator,
+            device=available_candidates.device,
+        ).item())
     if policy == "log_ei":
         return _analytic_argmax(
             LogExpectedImprovement(model=model, best_f=best_f),

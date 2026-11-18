@@ -108,3 +108,22 @@ full scientific matrix.
   This validates real-data ingestion and replay, but is not a scientific policy
   ranking because the target is provisional and variability is not measured.
 
+## 2026-11-18 execution update
+
+- The processed ALS spectra were converted into three provisional optimization
+  targets: total integrated intensity, maximum detected peak height, and
+  minimum peak FWHM.
+- A resumable paired replay now compares LogEI, LogPI, UCB, Thompson sampling,
+  MES, and a random-search reference with the same measured catalogue, 25-point
+  Sobol initialization, 99-measurement budget, GP surrogate, recommendation
+  rule, and retrospective scoring.
+- All five passive stopping observers are evaluated without changing any
+  acquisition trajectory or using future observations or the true optimum.
+- The reusable code, tests, and declared provisional protocol are committed.
+  The private source data and all data-derived trajectories, figures, and
+  numerical summaries remain outside the repository pending approval to share.
+- The main scientific gate is now target definition and risk calibration, not
+  software availability: the q window, background treatment, peak/FWHM
+  definition, success tolerance, acceptable false-stop risk, and live cost
+  model still require collaborator confirmation.
+

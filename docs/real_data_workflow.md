@@ -57,6 +57,16 @@ posterior-uncertainty diagnostic. It uses the published final ALS length scales
 as fixed values and therefore validates the replay structure, not a full
 reproduction with periodic hyperparameter fitting.
 
+`experiments/real_data_als_optimization_targets.py` adds three provisional
+optimization responses requested in the November discussion: total integrated
+intensity, maximum detected peak height, and minimum peak FWHM. The paired
+five-seed replay in `experiments/real_data_als_three_target_replay.py` compares
+the five formal BoTorch policies with a random-search reference while keeping
+the measured catalogue, Sobol initial design, budget, surrogate, and scoring
+rules fixed. The reusable implementation and configuration are committed; the
+private extracted catalogue, trajectories, numerical results, and figures are
+kept outside the repository. See [the three-target replay note](als_three_target_replay.md).
+
 ## Completed provisional replay results
 
 The five-seed mapping replay used 25 paired initial points and 99 total
@@ -87,4 +97,8 @@ the confirmed beamline objective.
 5. Should the replay use exact grid lookup or nearest-neighbor lookup for
    off-grid proposals?
 6. Should measurement time include motor travel and data-reduction latency?
+7. Should integrated intensity use the full q range, a background-subtracted
+   range, or a peak-specific window?
+8. Should FWHM be measured at half prominence, half raw height, or from a
+   fitted peak model?
 
