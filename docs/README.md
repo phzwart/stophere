@@ -23,7 +23,7 @@
 - [3D slices gallery, x3 = 0.50](../results/phase2/gallery/benchmark_gallery_3d_slices.png)
 - [3D slices gallery, x3 = 0.75](../results/phase2/gallery/benchmark_gallery_3d_slices_x3_075.png)
 
-## Phase 3 — exploratory NumPy characterization prototype
+## Phase 3 — acquisition comparisons and optimization
 
 - [Frozen formal Phase 3 fair-comparison protocol](phase3_fair_protocol.md)
 - [Formal BoTorch policy implementation](../src/policies.py)
@@ -31,7 +31,7 @@
 - [Four-system BoTorch smoke test](../experiments/phase3_botorch_smoke.py)
 - [Beamline experiment translation and open decisions](beamline_experiment_translation.md)
 
-- [Methods, MRF explanation, results, and limitations](phase3_characterization.md); this prototype does not complete the planned BoTorch Phase 3.
+- [Methods, MRF explanation, results, and limitations](phase3_characterization.md) — exploratory NumPy characterization, separate from the formal BoTorch comparisons.
 - [Reproducible Phase 3 experiment](../experiments/phase3_characterization.py)
 - [Extended-budget BO policy results](phase3_budget_profiles.md)
 - [External derivative-free algorithm results](phase3_external_algorithms.md)
@@ -52,6 +52,19 @@
 - [Formal pre-pilot policy summary](../results/phase3/full_budget_prepilot/policy_summary.csv)
 - [Formal pre-pilot stopping summary](../results/phase3/full_budget_prepilot/stopping_observer_summary.csv)
 - [Formal pre-pilot summary figure](../results/phase3/full_budget_prepilot/prepilot_summary.png)
+
+## Phase 4 — stopping observers
+
+- [Stopping-rule definitions and limitations](stopping_rules.md)
+- [Phase 4 overview](../PHASE4_README.md)
+- [Stopping observers implementation](../src/stopping.py)
+- [Stopping observer smoke experiment](../experiments/phase4_stopping_smoke.py)
+
+## Phase 5 — full synthetic pilot matrix
+
+- [Full matrix runner](../experiments/phase5_full_matrix.py)
+- [Full matrix manifest](../results/phase5/full_matrix/manifest.csv)
+- The full 24-case × 5-policy × 5-seed experiment is planned and has not been run.
 
 ## Project navigation
 

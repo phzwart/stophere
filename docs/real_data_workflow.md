@@ -43,19 +43,15 @@ does not replace the paper's fitted-peak extraction. Peter should confirm the
 peak model, q window, preprocessing, and scientific tolerance before the
 result is treated as a research comparison.
 
-`experiments/real_data_gp_maps.py` renders the stored posterior mean maps and
-measurement locations. `experiments/real_data_als_offline_replay.py` can run
-the formal optimization policies on the measured catalogue as a pipeline
-test. That replay maximizes the provisional scalar response; it is not the
-paper's variance-based mapping task. A formal real-data study should report
-mapping error or uncertainty reduction as well as optimization regret.
+`experiments/real_data_als_offline_replay.py` is an earlier one-seed
+optimization pipeline check using a provisional scalar response. The current
+optimization study is documented in `als_three_target_replay.md`.
 
-`experiments/real_data_als_mapping_replay.py` is the corresponding mapping
-smoke test. It compares maximum posterior variance with random sampling on the
-measured 57-by-57 grid and reports both truth-aware map RMSE and an online
-posterior-uncertainty diagnostic. It uses the published final ALS length scales
-as fixed values and therefore validates the replay structure, not a full
-reproduction with periodic hyperparameter fitting.
+## Historical side experiment: mapping
+
+An earlier mapping smoke test compared maximum posterior variance with random
+sampling on the measured grid. It is retained as historical work only. Mapping
+is outside the current project priority, which is optimization.
 
 `experiments/real_data_als_optimization_targets.py` adds three provisional
 optimization responses requested in the November discussion: total integrated
@@ -69,14 +65,8 @@ kept outside the repository. See [the three-target replay note](als_three_target
 
 ## Completed provisional replay results
 
-The five-seed mapping replay used 25 paired initial points and 99 total
-measurements. At the final budget, maximum-variance sampling achieved a mean
-normalized map RMSE of 0.2860, compared with 0.2995 for random sampling. Its
-mean maximum posterior standard deviation divided by the response range was
-also lower: 0.2294 versus 0.3211. No run reached the provisional 0.05
-uncertainty threshold. This supports the expected coverage benefit of variance
-sampling, but the result is a pipeline smoke because the response is still the
-raw-maximum q proxy and the published final length scales are held fixed.
+The historical five-seed mapping replay is not part of the current optimization
+results or next-step plan.
 
 A one-seed optimization replay also ran LogEI, LogPI, UCB, Thompson sampling,
 and MES from the same 25 measured starting points to a total budget of 99.
@@ -90,15 +80,14 @@ the confirmed beamline objective.
 
 ## Remaining scientific decisions
 
-1. Is the primary beamline task mapping, optimization, or a staged combination?
-2. Which fitted peak and q range define the ALS response?
-3. What objective-unit error is scientifically acceptable?
-4. Which false-stop probability is acceptable at the beamline?
-5. Should the replay use exact grid lookup or nearest-neighbor lookup for
+1. Which fitted peak and q range define the ALS optimization response?
+2. What objective-unit error is scientifically acceptable for each target?
+3. Which false-stop probability is acceptable at the beamline?
+4. Should the replay use exact grid lookup or nearest-neighbor lookup for
    off-grid proposals?
-6. Should measurement time include motor travel and data-reduction latency?
-7. Should integrated intensity use the full q range, a background-subtracted
+5. Should measurement time include motor travel and data-reduction latency?
+6. Should integrated intensity use the full q range, a background-subtracted
    range, or a peak-specific window?
-8. Should FWHM be measured at half prominence, half raw height, or from a
+7. Should FWHM be measured at half prominence, half raw height, or from a
    fitted peak model?
 

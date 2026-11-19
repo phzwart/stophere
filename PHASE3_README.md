@@ -2,11 +2,11 @@
 
 ## Formal BoTorch implementation status
 
-The ALS three-target offline optimization pre-pilot is part of Phase 3 because
-it compares acquisition policies on measured objective values. Its passive
-stopping scores are a Phase 4 diagnostic on those same trajectories. It is not
-the Phase 5 full synthetic benchmark matrix. See
-`docs/als_three_target_replay.md`.
+The current real-data priority is optimization. The ALS three-target offline
+optimization pre-pilot is part of Phase 3 because it compares acquisition
+policies on measured objective values. Its passive stopping scores are a Phase
+4 diagnostic on those same trajectories. It is not the Phase 5 full synthetic
+benchmark matrix. See `docs/als_three_target_replay.md`.
 
 The fair-comparison rules are now explicit in
 `configs/phase3_fair_protocol.yaml` and explained in
@@ -72,6 +72,11 @@ python -m experiments.phase3_external_algorithms --budget 150 --seeds 5 --worker
 
 The current runner compares UCB, EI, PI, kernel families, length scales, exploration weights, matched observation noise, and random search across nine systems. It uses a transparent fixed-hyperparameter NumPy GP.
 
-This prototype does not complete Peter's planned Phase 3. The formal Phase 3 deliverable still requires a shared BoTorch protocol for LogEI, LogPI, UCB, Thompson sampling, and max-value entropy search. The included stopping diagnostics are exploratory measurements, not formal Phase 4 stopping rules.
+The NumPy characterization prototype does not complete the formal Phase 3
+comparison. The shared BoTorch protocol and five acquisition policies are
+implemented and have completed a four-system pre-pilot and the ALS optimization
+pre-pilot. The full 24-case formal matrix is still planned as Phase 5. The
+NumPy prototype's stopping diagnostics remain exploratory; the separately
+implemented observers and their ALS replay scores belong to Phase 4.
 
 The external screen validates official adapters for BAM, SNOBFIT, CMA-ES, and NOMAD on the common six-system continuous 2D scope. It is still not the full cross-algorithm matrix: the current NumPy BO prototype uses finite catalogues, MCS has no validated Python adapter, and BAM requires an academic license above two variables. The Ising MRF remains a separate discrete protocol.

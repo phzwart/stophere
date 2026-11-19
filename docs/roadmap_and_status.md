@@ -97,7 +97,8 @@ full scientific matrix.
 - Private processed ALS and PETRA III data were downloaded and audited. The
   processed ALS archive contains a complete 57-by-57 grid of reduced spectra,
   which supports offline replay without committing private data.
-- A five-seed ALS mapping replay compared maximum posterior variance with
+- Historical side experiment, outside the current optimization priority: a
+  five-seed ALS mapping replay compared maximum posterior variance with
   random sampling from the same 25 starting measurements. At 99 measurements,
   maximum variance had lower mean normalized map RMSE (0.2860 versus 0.2995)
   and lower maximum posterior uncertainty (0.2294 versus 0.3211). This uses a
