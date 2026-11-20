@@ -27,6 +27,7 @@ This project studies when Bayesian optimization can stop while still returning a
 - `experiments/phase3_botorch_smoke.py`: four-system implementation smoke test; its output is not a scientific result.
 - `experiments/phase3_full_budget_prepilot.py`: resumable four-system, five-policy, five-seed full-budget pre-pilot.
 - `experiments/real_data_*.py`: reusable private-data inventory, target-extraction, and optimization-replay tools; private inputs and derived outputs are not committed.
+- `experiments/plot_als_three_target_diagnostics.py`: regenerates local contrast maps, log-scale target distributions, success intervals, and a held-out policy-selector audit for private ALS inputs.
 - `experiments/phase3_external_algorithms.py`: official external-solver adapter screen on six continuous 2D systems.
 - `tests/`: correctness checks for the BO example and benchmark bank.
 - `results/phase1/`: saved Phase 1 trace and numerical summary.

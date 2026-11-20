@@ -79,4 +79,13 @@ pre-pilot. The full 24-case formal matrix is still planned as Phase 5. The
 NumPy prototype's stopping diagnostics remain exploratory; the separately
 implemented observers and their ALS replay scores belong to Phase 4.
 
+The processed ALS optimization replay is an offline measured-data pre-pilot,
+not a new beamline run. It contains 90 trajectories (3 objectives × 6 policies
+× 5 paired seeds). `experiments/plot_als_three_target_diagnostics.py` recreates
+local high-contrast target maps, a log-scale peak-height distribution, success
+bars with Wilson intervals, and a small held-out policy-selection audit. The
+catalogue and all resulting figures/CSVs remain private and are intentionally
+excluded from Git; see `docs/als_three_target_replay.md` for the local command
+and current interpretation limits.
+
 The external screen validates official adapters for BAM, SNOBFIT, CMA-ES, and NOMAD on the common six-system continuous 2D scope. It is still not the full cross-algorithm matrix: the current NumPy BO prototype uses finite catalogues, MCS has no validated Python adapter, and BAM requires an academic license above two variables. The Ising MRF remains a separate discrete protocol.

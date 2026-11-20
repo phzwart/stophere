@@ -39,6 +39,42 @@ These extraction choices are scientifically plausible but provisional. The
 q window, background treatment, smoothing, peak definition, and width
 definition require collaborator approval before publication claims.
 
+## Local results and figures
+
+The processed-data catalogue, run trajectories, numerical summaries, and
+figures are stored locally and excluded from Git because the source files were
+provided through a private peer-review share. The local `task_summary.csv`,
+`policy_target_summary.csv`, and `stopping_summary.csv` hold the complete
+numerical outcomes for each task and policy. The 90 task runs use five seeds
+per objective-policy pair. Summary figures should be interpreted as
+preliminary evidence; five seeds are not enough for a stable policy ranking.
+
+To regenerate the higher-contrast local figures after making the catalogue and
+replay, run:
+
+~~~bash
+python -m experiments.plot_als_three_target_diagnostics \
+  PRIVATE_OUTPUT_DIRECTORY/als_optimization_targets.csv \
+  PRIVATE_OUTPUT_DIRECTORY/full_replay_regularized \
+  --output PRIVATE_OUTPUT_DIRECTORY/enhanced_figures
+~~~
+
+The script makes separate within-target percentile-rank heat maps for the
+three objectives, a peak-height histogram with a log x-axis, success bars with
+95% Wilson intervals, and an exploratory target-conditioned policy selector
+with held-out seeds. Percentile colors reveal spatial patterns but are
+relative ranks, not physical-value differences; colors cannot be compared
+across different objective maps. The peak-height histogram uses a log axis
+because its measured values have a long right tail.
+
+The selector chooses one policy per objective from training seeds 0–2 and
+compares it on held-out seeds 3–4 to the single policy selected globally from
+the same training seeds. Its exact local results are written to
+`selector_holdout_summary.csv`. Because there are only two held-out seeds and
+the target labels are supplied in advance, this is a proof-of-work for an
+adaptive-policy evaluation design, not evidence that a controller improves
+performance or a deployable agent.
+
 ## Fair replay protocol
 
 `experiments/real_data_als_three_target_replay.py` compares LogEI, LogPI, UCB,
